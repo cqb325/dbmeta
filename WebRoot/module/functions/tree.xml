@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree id="tree" radio="1">
+	<item text="功能树" id="-1" open="1" im0="cog.png" im1="cog.png" im2="cog.png">
+		<item text="" id="">
+		</item>
+	</item>
+</tree>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree id="tree" radio="1">
+	<item text="用户组" id="-1" open="1" im0="group_grey_add.png" im1="group_grey_add.png" im2="group_grey_add.png">
+		<item text="" id="">
+		</item>
+	</item>
+</tree>
