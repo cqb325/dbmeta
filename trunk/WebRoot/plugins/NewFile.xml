@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metas tablename="ro_dict_table" tableid="1">
+	<field fieldid="16" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLEID" fieldchnname="标识" fieldsize="100" fieldtype="1"
+		codetableid="" fieldscale="0" fieldcreateverid="0" fieldrequired="-1"
+		fieldiskey="-1" multicodetable="0" fieldseqid="42" fieldrule="0"
+		fieldposition="16" fielddefaultvalue="" fielddbtype="VARCHAR2">
+	</field>
+	<field fieldid="17" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLECHNNAME" fieldchnname="中文名" fieldsize="100"
+		fieldtype="1" fieldscale="0" fieldcreateverid="0" fieldrequired="-1"
+		fieldiskey="0" multicodetable="0" fieldrule="0" fieldposition="17"
+		fielddbtype="VARCHAR2">
+	</field>
+	<field fieldid="18" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLENAME" fieldchnname="名称" fieldsize="100" fieldtype="1"
+		codetableid="43" fieldscale="0" fieldcreateverid="0"
+		fieldrequired="-1" fieldiskey="0" multicodetable="0" fieldrule="0"
+		fieldposition="18" fielddbtype="VARCHAR2">
+		<codetable name="数据字典-表名称-中文名">
+			<code name="RO_RPT_VERBASE_STYLE_SORT"
+				value="RO_RPT_VERBASE_STYLE_SORT" />
+			<code name="RO_FILE_SERVER" value="RO_FILE_SERVER" />
+			<code name="TA_USERS" value="TA_USERS" />
+			<code name="TA_FUNCTIONS" value="TA_FUNCTIONS" />
+			<code name="RO_GLOBAL_UPDATE" value="RO_GLOBAL_UPDATE" />
+			<code name="RO_DICT_TABLE" value="RO_DICT_TABLE" />
+			<code name="VIRTUAL_PAGE_REPORT_DATA"
+				value="VIRTUAL_PAGE_REPORT_DATA" />
+			<code name="TA_ORG2POWER" value="TA_ORG2POWER" />
+			<code name="RO_RPT_VERBASE_STYLE_STATFIELD"
+				value="RO_RPT_VERBASE_STYLE_STATFIELD" />
+			<code name="RO_RPT_VERBASE_STYLE_GROUP"
+				value="RO_RPT_VERBASE_STYLE_GROUP" />
+			<code name="LOG_FUNC" value="LOG_FUNC" />
+			<code name="RO_RPT_REGION_ITEMEXT"
+				value="RO_RPT_REGION_ITEMEXT" />
+			<code name="RO_DS_AUDITRESULT" value="RO_DS_AUDITRESULT" />
+			<code name="RO_DS_STATUS" value="RO_DS_STATUS" />
+			<code name="3_VIRTUAL_PAGE_GRID_REPORTLIST"
+				value="3_VIRTUAL_PAGE_GRID_REPORTLIST" />
+			<code name="RO_RPT_VERBASE" value="RO_RPT_VERBASE" />
+			<code name="RO_DS_TEMPLATE2" value="RO_DS_TEMPLATE2" />
+			<code name="RO_DS_TEMPLATE3" value="RO_DS_TEMPLATE3" />
+			<code name="RO_RPT_BASE" value="RO_RPT_BASE" />
+			<code name="RO_RPT_REGION" value="RO_RPT_REGION" />
+			<code name="RO_GLOBAL_SEQUENCE" value="RO_GLOBAL_SEQUENCE" />
+			<code name="RO_DS_BUSINESSSTATUS"
+				value="RO_DS_BUSINESSSTATUS" />
+			<code name="RO_COMMON_PARAM" value="RO_COMMON_PARAM" />
+			<code name="RO_DBSERVER" value="RO_DBSERVER" />
+			<code name="TA_LOGIN" value="TA_LOGIN" />
+			<code name="RO_RPT_GROUP" value="RO_RPT_GROUP" />
+			<code name="RO_DS_TEMPLATE" value="RO_DS_TEMPLATE" />
+			<code name="RO_RPT_REGION_LAYER"
+				value="RO_RPT_REGION_LAYER" />
+			<code name="ETL_VALUEMAP" value="ETL_VALUEMAP" />
+			<code name="TEST_USER" value="TEST_USER" />
+			<code name="TA_USER_EX_1" value="TA_USER_EX_1" />
+			<code name="VIEW_TA_USER2POWER" value="VIEW_TA_USER2POWER" />
+			<code name="TA_ROLE2USER" value="TA_ROLE2USER" />
+			<code name="ETL_JOB" value="ETL_JOB" />
+			<code name="LOG_BUSS" value="LOG_BUSS" />
+			<code name="RO_GLOBAL_CONFIG" value="RO_GLOBAL_CONFIG" />
+			<code name="RO_RPT_VERSION" value="RO_RPT_VERSION" />
+			<code name="RO_CHART" value="RO_CHART" />
+			<code name="RO_GLOBAL_PARAM" value="RO_GLOBAL_PARAM" />
+			<code name="RO_DICT_CODETABLEDATA"
+				value="RO_DICT_CODETABLEDATA" />
+			<code name="ETL_JOB_FLOW" value="ETL_JOB_FLOW" />
+			<code name="ETL_VALUEMAPDATA" value="ETL_VALUEMAPDATA" />
+			<code name="RO_DICT_CODETABLE" value="RO_DICT_CODETABLE" />
+			<code name="VIRTUAL_PAGE_GRID_REPORTLIST_AUDIT"
+				value="VIRTUAL_PAGE_GRID_REPORTLIST_AUDIT" />
+			<code name="RO_GLOBAL_SEQUENCE_RECYCLE"
+				value="RO_GLOBAL_SEQUENCE_RECYCLE" />
+			<code name="RO_DICT_FIELD" value="RO_DICT_FIELD" />
+			<code name="RO_GLOBAL_DIM_SPACE"
+				value="RO_GLOBAL_DIM_SPACE" />
+			<code name="RO_RPT_REGION_DATAFILTER"
+				value="RO_RPT_REGION_DATAFILTER" />
+			<code name="RO_FORM" value="RO_FORM" />
+			<code name="ETL_FLOW" value="ETL_FLOW" />
+			<code name="TA_RESTYPE2DATA" value="TA_RESTYPE2DATA" />
+			<code name="LOG_METHOD" value="LOG_METHOD" />
+			<code name="RO_FORM_FUNC" value="RO_FORM_FUNC" />
+			<code name="TEST_LOGIN" value="TEST_LOGIN" />
+			<code name="RO_FORM_ROWFUNC" value="RO_FORM_ROWFUNC" />
+			<code name="RO_FORM_FIELD" value="RO_FORM_FIELD" />
+			<code name="RO_FORM_QUERY" value="RO_FORM_QUERY" />
+			<code name="RO_GLOBAL_UPDATEDETAIL"
+				value="RO_GLOBAL_UPDATEDETAIL" />
+			<code name="TA_RESOURCES" value="TA_RESOURCES" />
+			<code name="TEST_DOCUMENT" value="TEST_DOCUMENT" />
+			<code name="RO_RPT_REGION_AUDIT"
+				value="RO_RPT_REGION_AUDIT" />
+			<code name="TA_ROLES" value="TA_ROLES" />
+			<code name="RO_RPT_GROUP2DATE" value="RO_RPT_GROUP2DATE" />
+			<code name="TA_RESOPERATE" value="TA_RESOPERATE" />
+		</codetable>
+	</field>
+	<field fieldid="19" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLEMEMO" fieldchnname="备注" fieldsize="1000" fieldtype="1"
+		fieldscale="0" fieldcreateverid="0" fieldrequired="0" fieldiskey="0"
+		multicodetable="0" fieldrule="0" fieldposition="19"
+		fielddbtype="VARCHAR2">
+	</field>
+	<field fieldid="20" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLECLASS" fieldchnname="分组" fieldsize="22" fieldtype="3"
+		codetableid="2" fieldscale="0" fieldcreateverid="0" fieldrequired="-1"
+		fieldiskey="0" multicodetable="0" fieldrule="0" fieldposition="20"
+		fielddefaultvalue="1" fielddbtype="NUMBER">
+		<codetable name="数据字典-表-表分组">
+			<code name="服务数据表" value="3" />
+			<code name="业务数据表" value="2" />
+			<code name="产品数据表" value="1" />
+		</codetable>
+	</field>
+	<field fieldid="21" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLECREATEVERID" fieldchnname="版本号" fieldsize="22"
+		fieldtype="3" fieldscale="0" fieldcreateverid="0" fieldrequired="-1"
+		fieldiskey="0" multicodetable="0" fieldrule="0" fieldposition="21"
+		fielddefaultvalue="0" fielddbtype="NUMBER">
+	</field>
+	<field fieldid="22" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLESERVERID" fieldchnname="服务器ID" fieldsize="100"
+		fieldtype="1" codetableid="44" fieldscale="0" fieldcreateverid="0"
+		fieldrequired="-1" fieldiskey="0" multicodetable="0" fieldrule="0"
+		fieldposition="22" fielddefaultvalue="-1" fielddbtype="VARCHAR2">
+	</field>
+	<field fieldid="24" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLESQL" fieldchnname="查询" fieldsize="4000" fieldtype="6"
+		fieldscale="0" fieldcreateverid="0" fieldrequired="0" fieldiskey="0"
+		multicodetable="0" fieldrule="0" fieldposition="24"
+		fielddbtype="CLOB">
+	</field>
+	<field fieldid="25" tableserverid="-1" tablename="ro_dict_table"
+		fieldname="TABLETYPE" fieldchnname="类别" fieldsize="22" fieldtype="3"
+		codetableid="1" fieldscale="0" fieldcreateverid="0" fieldrequired="-1"
+		fieldiskey="0" multicodetable="0" fieldrule="0" fieldposition="25"
+		fielddefaultvalue="1" fielddbtype="NUMBER">
+		<codetable name="数据字典-表-表类别">
+			<code name="虚拟表" value="2" />
+			<code name="实体表" value="1" />
+		</codetable>
+	</field>
+</metas>

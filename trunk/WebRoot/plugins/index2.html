@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Grid</title>
+<script type="text/javascript" src="lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="lib/head.load.min.js"></script>
+<script type="text/javascript" src="cui/jsloader.js"></script>
+<script type="text/javascript" src="cui/jsregister.js"></script>
+<script type="text/javascript" src="lib/jquery.event.drag-2.0.min.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-1.8.16.custom.min.js"></script>
+<link rel="stylesheet" href="lib/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript">
+	JSLoader.load("Grid");
+	var columns = [];
+	
+	var data = [];
+	for (var i = 0; i < 500; i++) {
+		data[i] = {
+			id: "id_"+i,
+                  fieldid: "",
+                  fieldname: "fielaname" +i,
+                  fieldchnname: (i%5+1),
+                  tablename: (Math.round(Math.random() * 100) % 2 == 0),
+                  fieldsize: Math.round(Math.random() * 100),
+                  fieldtype: "01/01/2011",
+                  f1: "f1"+i,
+                  f2: "f1"+i,
+                  f3: "f1"+i,
+                  f4: "f1"+i,
+                  f5: "f1"+i,
+                  f6: "f1"+i,
+                  f7: "f1"+i,
+                  f8: "f1"+i
+              };
+	}
+	//1: 字符串
+	//2: 数字
+	//3: 日期
+	//4: 日期时间
+	//5: 布尔值
+	//6: 百分比
+	//7: 大字段
+	
+	JSLoader.ready(function() {
+		columns.push(
+			{id:"fieldid", name:"字段标识", minWidth:95, field:"fieldid", fieldtype: 1});
+		columns.push(	
+			{id:"fieldname", name:"字段名称", minWidth:95, field:"fieldname", fieldtype: 1});
+		columns.push(
+			{id:"fieldchnname", name:"字段类型", minWidth:95, field:"fieldchnname", fieldtype: 1, formatcode: {1: "字符串",2:"数值",3: "日期",5: "布尔值"}});
+		columns.push(
+			{id:"tablename", name:"是否有值", minWidth:95, field:"tablename", fieldtype: 5});
+		columns.push(
+			{id:"fieldsize", name:"百分比", minWidth:95, field:"fieldsize", fieldtype: 6});
+		columns.push(
+			{id:"f1", name:"日期", minWidth:95, field:"f1", fieldtype: 3});
+			columns.push(
+			{id:"f2", name:"日期", minWidth:95, field:"f2", fieldtype: 3});
+			columns.push(
+			{id:"f3", name:"日期", minWidth:95, field:"f3", fieldtype: 3});
+			columns.push(
+			{id:"f4", name:"日期", minWidth:95, field:"f4", fieldtype: 3});
+			columns.push(
+			{id:"f5", name:"日期", minWidth:95, field:"f5", fieldtype: 1});
+			columns.push(
+			{id:"f6", name:"日期", minWidth:95, field:"f6", fieldtype: 1});
+			columns.push(
+			{id:"f7", name:"日期", minWidth:95, field:"f7", fieldtype: 1});
+			columns.push(
+			{id:"f8", name:"日期", minWidth:95, field:"f8", fieldtype: 1});
+		
+		var grid = $("#grid").Grid({
+			columns: columns,
+			data: data,
+			title: "字段信息",
+			checkcolumn: true,
+			pageable: true,
+			sortable: true,
+			editable: true,
+			asyncEditorLoading: true
+		});
+	});
+</script>
+<style type="text/css">
+body{
+	
+}
+.panel{
+	padding: 5px;
+	border: 2px solid #ccc;
+}
+#tree{
+	width: 100%;
+	height: 100%
+}
+#grid{
+	width: 100%;
+	height: 500;
+	border: 1px solid #ccc;
+}
+.cui-grid{
+	width: 100%;
+	height: 300px;
+}
+</style>
+</head>
+<body>
+		<div id="grid"></div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+.cui-scroll { clear: both;}
+.cui-scroll .cui-scroll-viewport { overflow: hidden; position: relative; }
+.cui-scroll .cui-scroll-content { list-style: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+.cui-scroll .cui-scroll-thumb .cui-scroll-end,
+.cui-scroll .cui-scroll-thumb { background-color: #ECEBEB; -webkit-user-select:none; -moz-user-select:none;}
+.cui-scroll .cui-scroll-bar-y { position: relative; float: right; width: 15px; }
+.cui-scroll .cui-scroll-bar-x { position: relative; float: left; height: 15px; display:none;}
+.cui-scroll .cui-scroll-bar-y .cui-scroll-track { background-color: #1D374F; height: 100%; width:3px; position: relative; padding: 0px; left: 6px;}
+.cui-scroll .cui-scroll-bar-y .cui-scroll-thumb { border-radius: 5px; height: 20px; width: 11px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -4px;}
+.cui-scroll .cui-scroll-bar-y .cui-scroll-thumb .cui-scroll-end { overflow: hidden; height: 5px; width: 11px; display: none;}
+.cui-scroll .cui-scroll-bar-x .cui-scroll-track { background-color: #1D374F; width: 100%; height:3px; position: relative; padding: 0px; top: 6px;}
+.cui-scroll .cui-scroll-bar-x .cui-scroll-thumb { border-radius: 5px; width: 20px; height: 11px; cursor: pointer; overflow: hidden; position: absolute; left: 0; top: -4px;}
+.cui-scroll .cui-scroll-bar-x .cui-scroll-thumb .cui-scroll-end { overflow: hidden; width: 5px; height: 11px; display: none;}
+.cui-scroll .cui-scroll-disable{ display: none; }

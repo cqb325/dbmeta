@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Grid</title>
+<link rel="stylesheet" type="text/css" href="../cui/themes/theme.css">
+<script type="text/javascript" src="../lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../lib/head.load.min.js"></script>
+<script type="text/javascript" src="../cui/jsloader.js"></script>
+<script type="text/javascript" src="../cui/jsregister.js"></script>
+<script type="text/javascript" src="../lib/jquery.event.drag-2.0.min.js"></script>
+<script type="text/javascript" src="../lib/jquery-ui-1.8.16.custom.min.js"></script>
+<link rel="stylesheet" href="../lib/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript">
+	JSLoader.load("Panel,LayerOut,Tree,Grid");
+	JSLoader.load("cui.CUIConnector");
+	//1: 字符串
+	//2: 数字
+	//3: 日期
+	//4: 日期时间
+	//5: 布尔值
+	//6: 百分比
+	//7: 大字段
+	var buttons = [
+		{
+			id: "addbt",
+			title: "添加",
+			handler: add,
+			skin: "green"
+		},
+		{
+			id: "editbt",
+			title: "修改",
+			handler: edit,
+			skin: "green"
+		},
+		{
+			id: "delbt",
+			title: "删除",
+			handler: del,
+			skin: "green"
+		}
+	];
+	JSLoader.ready(function() {
+		var north = $("#north").Panel({
+			anchor: "top",
+			height: 50
+		}).data("Panel");
+		/*var sourth = $("#sourth").Panel({
+			anchor: "bottom",
+			height: 30
+		}).data("Panel");*/
+		var west = $("#west").Panel({
+			anchor: "left",
+			title: "West",
+			width: 200
+		}).data("Panel");
+		var east = $("#east").Panel({
+			title: "East",
+			anchor: "right",
+			width: 200
+		}).data("Panel");
+		var client = $("#client").Panel({
+			title: "Client",
+			anchor: "client",
+			tbar: buttons
+		}).data("Panel");
+		
+		
+		var layerout = new CUI.LayerOut();
+		layerout.add(north);
+		//layerout.add(sourth);
+		layerout.add(west);
+		layerout.add(east);
+		layerout.add(client);
+		
+		var tree = $("#tree").Tree({
+			treeid: 1,
+			treewidth: "100%",
+			treeheight: "100%"
+		}).data("Tree");
+		
+		tree.setSkin("dhx_skyblue");
+		tree.setImagePath("../cui/images/tree/csh_dhx_skyblue/");
+		tree.loadXML("tree1.xml");
+		
+		var connector = new jQuery.fn.cui.CUIConnector({
+			tableId: "1",
+			pageSize: 10,
+			url: "/dbmeta/cuiConnector.cui",
+			dataType: "json"
+		});
+		connector.connector();
+		
+		var grid = $("#grid").Grid({
+			title: "字段信息",
+			checkcolumn: true,
+			pageable: true,
+			sortable: true,
+			editable: true,
+			asyncEditorLoading: true,
+			datasource: connector
+		});
+	});
+	
+	function add(){}
+	function edit(){}
+	function del(){}
+</script>
+<style type="text/css">
+body{
+	
+}
+.panel{
+	border: 0.5px solid #ccc;
+}
+#tree{
+	width: 100%;
+	height: 100%
+}
+#grid{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #ccc;
+}
+#north{
+	background-color: #FFC200;
+}
+
+</style>
+</head>
+<body>
+	<div id="north" class="panel"> North </div>
+	<div id="west" class="panel">
+		<div id="tree"></div>
+	</div>
+	<div id="east" class="panel">East</div>
+	<div id="sourth" class="panel">Sourth</div>
+	<div id="client" class="panel">
+		<div id="grid"></div>
+	</div>
+</body>
+</html>
