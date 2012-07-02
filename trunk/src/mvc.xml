@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<interceptors>
+		<interceptor name="checkLogin" class="com.urp.interceptor.CheckLoginInterceptor"></interceptor>
+	</interceptors>
+	
+	<globe-results>
+		<result name="logout">/login.html</result>
+		<result name="error">/common/error.jsp</result>
+	</globe-results>
+	
+	<include src="com/dbmeta/action/mvc-dbmeta.xml"/>
+	<include src="com/urp/actions/mvc-urp.xml"/>
+</config>

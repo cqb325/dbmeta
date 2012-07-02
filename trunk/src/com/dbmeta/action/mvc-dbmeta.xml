@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<actions name="dbAction">
+		<action name="getAllManageredTables">
+			<result name="success">/module/table/index.jsp</result>
+			<result name="error">/common/error.jsp</result>
+		</action>
+		<action name="getAllTables">
+			<result name="success">/module/table/alltable.jsp</result>
+			<result name="error">/common/error.jsp</result>
+		</action>
+		<action name="addTableManager">
+			<link name="success" action="dbAction">getAllManageredTables</link>
+			<result name="error">/common/error.jsp</result>
+		</action>
+		<action name="getAllManageredFields">
+			<result name="success">/common/ajax.jsp</result>
+			<result name="error">/common/error.jsp</result>
+		</action>
+		<action name="getFieldById">
+			<result name="success">/module/field/edit.jsp</result>
+			<result name="error">/common/error.jsp</result>
+		</action>
+		<action name="hasTableManagered">
+			<result name="success">/common/ajax.jsp</result>
+			<result name="error">/common/error.jsp</result>
+		</action>
+		<action name="delTableManager">
+			<link name="success" action="dbAction">getAllManageredTables</link>
+			<result name="error">/common/error.jsp</result>
+		</action>
+	</actions>
+	<actions name="fieldAction">
+		<action name="editField">
+			<link name="success" action="dbAction">getAllManageredFields</link>
+			<result name="error">/common/error.jsp</result>
+		</action>
+	</actions>
+</config>
