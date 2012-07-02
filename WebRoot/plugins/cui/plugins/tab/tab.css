@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+.cui-tab{
+	position: relative;
+}
+.cui-tab-aligntop .cui-tab-title, .cui-tab-alignbottom .cui-tab-title{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+}
+.cui-tab-aligntop .cui-tab-title{
+	top: 0px;
+}
+.cui-tab-alignbottom .cui-tab-title{
+	bottom: 0px;
+}
+.cui-tab-alignleft .cui-tab-title, .cui-tab-alignright .cui-tab-title{
+	position: absolute;
+	width: 50px;
+	top: 0px;
+	bottom: 0px;
+}
+.cui-tab-alignleft .cui-tab-title{
+	left: 0px;
+}
+.cui-tab-alignright .cui-tab-title{
+	right: 0px;
+}
+
+.cui-tab-but{
+	margin: 0px;
+	color: #333;
+	border: 1px solid #333;
+	text-decoration: none;
+	padding: 3px 10px;
+	float: left;
+	cursor: pointer;
+}
+.cui-tab-alignright .cui-tab-but{
+	float: right;
+}
+
+.cui-tab-main{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow: hidden;
+	border: 1px solid #333;
+}
+.cui-tab-roll{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+.cui-tab-content{
+	width: 100%;
+	height: 100%;
+	float: left;
+	overflow: auto;
+}

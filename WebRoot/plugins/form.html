@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FORM</title>
+<script type="text/javascript" src="lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="lib/head.load.min.js"></script>
+<script type="text/javascript" src="cui/jsloader.js"></script>
+<script type="text/javascript" src="cui/jsregister.js"></script>
+<script type="text/javascript">
+	JSLoader.load("cui.CUIConnector,Form");
+	var form = null;
+	JSLoader.ready(function() {
+		var connector = new jQuery.fn.cui.CUIConnector({
+			tableId: "1",
+			pageSize: -1,
+			url: "/dbmeta/cuiConnector.cui",
+			dataType: "json"
+		});
+		connector.connector();
+		
+		form = new CUI.Form({
+			connector: connector,
+			formele: $("#dataform"),
+			type: 2
+		});
+		form.init();
+		
+		
+		//printvalues(form);
+		
+		/*form.formdb.rowpoint = 1;
+		form.formdb.onRowChange();
+		
+		console.log("-------------------------");
+		printvalues(form);*/
+		
+		
+	});
+	
+	function printvalues(form){
+		for(var i in form.formdb.elements){
+			var dblink = form.formdb.elements[i];
+			console.log(dblink.name+" : "+dblink.getValue());
+		}
+	}
+	
+	function edit(){
+		form.submit(function(){
+			alert("更新成功");
+		});
+	}
+	
+	function updatexml(){
+		console.log(form.formdb.getUpdateXML());
+	}
+</script>
+<style type="text/css">
+body{
+	height: 600px;
+}
+</style>
+</head>
+<body>
+	<form id="dataform">
+	
+	</form>
+	
+	<a href="javascript: edit()">修改</a>
+	<a href="javascript: printvalues(form)">aaa</a>
+</body>
+</html>

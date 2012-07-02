@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+.cui-box.cui-floatdiv{
+	
+}
+.cui-box.cui-floatdiv .cui-floatdiv-closeicon{
+	right: 5px;
+	top: 4px;
+	background: url(../../images/ui-icons_ffffff_256x240.png) -32px -192px;
+	width: 16px;
+	height: 16px;
+}
+.cui-box.cui-floatdiv .cui-floatdiv-title{
+	border-bottom: 1px solid #333;
+	margin: 5px 0 0 0px;
+	padding-left: 5px;
+}
+.cui-box.cui-floatdiv .cui-floatdiv-wrapper{
+	background-color: #555555;
+}
+.cui-box.cui-floatdiv .cui-floatdiv-content{
+	background-color: #555555;
+}
+.cui-box .cui-message-area{
+	padding: 5px;
+}
+.cui-box .cui-button-area{
+	height: 35px;
+}
+.cui-box .cui-box-icon{
+	width: 32px;
+	height: 32px;
+	float: left;
+	background: url(../../images/jbox-icons.png);
+}
+.cui-box .cui-box-content{
+	float: left;
+	padding: 8px 5px 5px 10px;
+}
+.cui-box .cui-box--icon-message{
+	background-position: 0px 0px;
+}
+.cui-box .cui-box--icon-error{
+	background-position: -144px 0px;
+}
+.cui-box .cui-box--icon-warning{
+	background-position: -108px 0px;
+}
+.cui-box .cui-box--icon-success{
+	background-position: -72px 0px;
+}
+.cui-box .cui-box--icon-confirm{
+	background-position: -36px 0px;
+}
+.cui-box a.cui-box-button{
+	float: right;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	padding: 2px 8px;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+	color: #ccc;
+	background: #222;
+	margin-right: 5px;
+}
+.cui-box a.cui-box-button:hover{
+	background-color: #111; color: #fff;
+}
+.cui-box a.cui-box-button:visited{
+	
+}

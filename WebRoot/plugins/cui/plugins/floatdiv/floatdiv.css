@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+.cui-floatdiv{
+	position: absolute;
+	word-break: break-all;
+	word-wrap: break-word;	
+}
+.cui-floatdiv-wrapper{
+	background-color: #555555;
+	padding: 0px 5px 5px 5px;
+	border: 1px solid #ffffff;
+	border-radius: 5px;
+	box-shadow: 3px 3px 4px #000000;
+}
+.cui-floatdiv-content{
+	background-color: white;
+}
+.cui-floatdiv-closeicon{
+	background-image: url(images/closebox.png);
+	position: absolute;
+	right: -15px;
+	top: -15px;
+	z-index: 2;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+}
+
+.cui-floatdiv-leftcloseicon{
+	left: -15px;
+}
+.cui-floatdiv-title{
+	height: 20px;
+	background-color: #555555;
+	color: white;
+	font-size: 13px;
+	margin: 5px 0 0 10px;
+	cursor: move;
+}
+
+#cui-floatdiv-mode{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0px;
+	top:0px;
+	background-color: #cccccc;
+}

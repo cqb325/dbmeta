@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+.cui-list{
+	background-color: #555555;
+	border: 1px solid #ffffff;
+	border-radius: 5px;
+	box-shadow: 3px 3px 4px #000000;
+}
+.cui-list ul.cui-list-main{
+	margin: 0px;
+	padding: 5px;
+	list-style: none;
+}
+.cui-list ul.cui-list-main li.cui-list-item{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	height: 25px;
+	line-height: 25px;
+	cursor: default;
+	border-bottom: 1px dotted #ccc;
+}
+li.cui-list-item.cui-list-item-over{
+	background-color: #fff;
+	border-radius: 5px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Draggable</title>
+<script type="text/javascript" src="lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="lib/head.load.min.js"></script>
+<script type="text/javascript" src="cui/jsloader.js"></script>
+<script type="text/javascript" src="cui/jsregister.js"></script>
+<script type="text/javascript">
+	JSLoader.load("cui.CUIConnector");
+	JSLoader.ready(function() {
+		var connector = new jQuery.fn.cui.CUIConnector({
+			tableId: "1",
+			pageSize: 10,
+			url: "/dbmeta/cuiConnector.cui"
+			//dataType: "json"
+		});
+		connector.connector();
+		alert(connector.meta.fieldMetas.length);
+		alert("共"+connector.records.length+"条数据");
+		
+		for(var i in connector.records){
+			var record = connector.records[i];
+			var aaa = [];
+			for(var j in record.fieldsMap){
+				aaa.push(j+" : "+record.fieldsMap[j]+" ");
+			}
+			console.log(aaa.join(" , "));
+		}
+		console.log("-------------------------- 伟大的分割线 -------------------------------");
+		console.log("-------------------------- 伟大的分割线 -------------------------------");
+		console.log("-------------------------- 伟大的分割线 -------------------------------");
+		
+		for(var i in connector.meta.fieldMetas){
+			var codetable = connector.meta.fieldMetas[i].getcodetable();
+			
+			if(codetable){
+				console.log(codetable.name);
+				for(var codename in codetable.codes){
+					console.log(codename +" : "+codetable.codes[codename]);
+				}
+			}
+		}
+	});
+</script>
+<style type="text/css">
+body{
+	height: 600px;
+}
+</style>
+</head>
+<body>
+	aaa
+</body>
+</html>
