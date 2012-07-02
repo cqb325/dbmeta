@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<actions name="userAction">
+		<action name="login">
+			<result name="success">/index.jsp</result>
+		</action>
+	</actions>
+	
+	<actions name="userGroupAction">
+		<action name="getChildrenXMLByParentId">
+			<result name="success">/common/xml.jsp</result>
+		</action>
+	</actions>
+	
+	<actions name="functionAction">
+		<action name="getChildrenXMLByParentId">
+			<result name="success">/common/xml.jsp</result>
+		</action>
+	</actions>
+	<actions name="rightAction">
+		<action name="getAllFunRightDesinerXML">
+			<result name="success">/common/xml.jsp</result>
+		</action>
+		<action name="getChildrenFunRightsXML">
+			<result name="success">/common/xml.jsp</result>
+		</action>
+	</actions>
+	
+	<actions name="excelAction">
+		<action name="validateExcel">
+			<result name="success">/module/excel/grid.jsp</result>
+		</action>
+	</actions>
+</config>
