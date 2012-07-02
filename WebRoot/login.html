@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CQB</title>
+<link rel="stylesheet" type="text/css" href="plugins/cui/themes/theme.css">
+<link href="resource/theme/nomal/style.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" href="logo.png" type="image/png" />
+<script type="text/javascript" src="plugins/lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="plugins/lib/head.load.min.js"></script>
+<script type="text/javascript" src="plugins/cui/jsloader.js"></script>
+<script type="text/javascript" src="plugins/cui/jsregister.js"></script>
+<script type="text/javascript" src="plugins/lib/jquery.event.drag-2.0.min.js"></script>
+<script type="text/javascript" src="plugins/lib/jquery-ui-1.8.16.custom.min.js"></script>
+<link rel="stylesheet" href="plugins/lib/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" charset="utf-8" />
+<script type="text/javascript" src="plugins/lib/md5.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#username").focus();
+		$("#submit_bt").click(function(){
+			formsubmit();
+			return false;
+		});
+		
+		$("#wrapper").keypress(function(evt){
+			var keycode = evt.keyCode;
+			if(keycode == 13){
+				formsubmit();
+				return false;
+			}
+		});
+	});
+	
+	function formsubmit(){
+		var dataform = $("#dataform")[0];
+		var username = $("#username").val();
+		var password = $("#_password").val();
+		if($.trim(username) == ""){
+			return false;
+		}
+		if($.trim(password) == ""){
+			return false;
+		}
+		$("#password").val(faultylabs.MD5(password));
+		dataform.submit();
+	}
+</script>
+<style type="text/css">
+#wrapper{
+	color: #ddd;
+	margin: 0 auto;
+	width: 300px;
+	height: 230px;
+	border: 5px solid #555;
+	border-radius: 8px;
+	box-shadow: 1px 1px 8px #333;
+	position:relative;
+	top: 50%;
+	margin-top: -115px;
+	font-size: 15px;
+}
+#title{
+	text-align: center;
+	border-bottom:dotted 1px #333;
+}
+.input{
+	height: 30px;
+	width: 200px;
+	border: 1px solid #D7B78A;
+	border-radius: 15px;
+	padding-left: 10px;
+}
+label{
+	margin: 0px 10px;
+}
+.formfield{
+	margin-bottom: 15px;
+	height: 35px;
+	line-height: 35px;
+}
+.formcontrol{
+	text-align: center;
+}
+.form_bt{
+	margin: 5px 10px;
+}
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h3 id="title">登录</h3>
+		
+		<form name="dataform" id="dataform" method="post" action="userAction!login.action">
+		<div class="formfield">
+			<label for="username">用户名: </label>
+			<input type="text" name="username" id="username" class="input" focus="true" placeholder="用户名">
+		</div>
+		
+		<div class="formfield">
+			<label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码: </label>
+			<input type="text" name="_password" id="_password" class="input" placeholder="密码">
+		</div>
+		<input type="hidden" name="password" id="password">
+		<div class="formfield formcontrol">
+			<a href="#" class="cui-button yellow form_bt" id="submit_bt">登录</a>
+			<a href="#" class="cui-button yellow form_bt">取消</a>
+		</div>
+		</form>
+	</div>
+</body>
+</html>
