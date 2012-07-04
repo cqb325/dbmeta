@@ -123,8 +123,7 @@ public class ExcelServiceImpl implements ExcelService {
 				if(field.getFieldname().equalsIgnoreCase(columnnames[i])){
 					fieldnameb.append(field.getFieldname());
 					fieldnameb.append(",");
-					indexesb.append(i);
-					indexesb.append(",");
+					indexesb.append(i+",");
 					valuexb.append("?,");
 					break;
 				}
@@ -132,7 +131,6 @@ public class ExcelServiceImpl implements ExcelService {
 		}
 		String fieldnames = fieldnameb.toString();
 		
-		System.out.println("fieldnames>>>>>>>>"+fieldnames);
 		String valuex = valuexb.toString();
 		if(valuex.length() > 0){
 			valuex = valuex.substring(0, valuex.length() -1);
@@ -142,9 +140,9 @@ public class ExcelServiceImpl implements ExcelService {
 		List<Object[]> params = new ArrayList<Object[]>();
 		
 		for(String[] row : values){
-			if(indexes.length-1 < values[0].length){
+			if(indexes.length < values[0].length){
 				String[] rowdata = new String[indexes.length];
-				for(int j=0; j<indexes.length-1; j++){
+				for(int j=0; j<indexes.length; j++){
 					int index = Integer.valueOf(indexes[j]);
 					rowdata[j] = row[index];
 				}
@@ -170,5 +168,46 @@ public class ExcelServiceImpl implements ExcelService {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public List<Table> getAllManageredTables() {
+		String sql = "select * from ro_dict_table";
+		List<Table> tables = new ArrayList<Table>();
+		
+		try {
+			List<Table> gettables = jdbcTemplate.queryForBeans(sql, Table.class);
+			for(int i=0; i< gettables.size(); i++){
+				Table table = gettables.get(i);
+				String tablename = table.getTablename();
+				
+				if(!issystable(tablename)){
+					tables.add(table);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tables;
+	}
+	
+	/**
+	 * 是否为系统内置表格（非业务表格）
+	 * @param tablename
+	 * @return
+	 */
+	private boolean issystable(String tablename){
+		String excelexceptesuffix = PropertyManager.getOtherPeroperty("urp", "excelexceptesuffix");
+		String[] esuffixes = excelexceptesuffix.split(",");
+		
+		boolean flag = false;
+		for(String suffix : esuffixes){
+			if(tablename.startsWith(suffix)){
+				flag = true;
+				break;
+			}
+		}
+		
+		return flag;
 	}
 }

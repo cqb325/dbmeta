@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cqb.action.FormFile;
+import com.dbmeta.entry.Table;
 
 public interface ExcelService {
 	
@@ -33,4 +34,10 @@ public interface ExcelService {
 	 * @return
 	 */
 	public boolean insertData(String tableid);
+	
+	/**
+	 * 获取所有管理的表不包含非业务表
+	 * @return
+	 */
+	public List<Table> getAllManageredTables();
 }
