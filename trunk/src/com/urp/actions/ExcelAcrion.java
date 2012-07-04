@@ -22,6 +22,7 @@ public class ExcelAcrion {
 	
 	@AutoWired
 	private ExcelServiceImpl excelServiceImpl;
+
 	public String validateExcel(){
 		try{
 			ContextPvd ctx = ApplicationMap.getContextPvd(this);
@@ -34,7 +35,7 @@ public class ExcelAcrion {
 			}
 			excelServiceImpl.deleteTemp(rootpath);
 			
-			List<Table> tables = DBManager.getTables();
+			List<Table> tables = excelServiceImpl.getAllManageredTables();
 			
 			System.out.println(json.toString());
 			ctx.setRequestAttr("json", json.toString());

@@ -8,4 +8,8 @@
 	<beans>
 		<property name="JdbcTemplate" value="com.at21.jdbc.core.JdbcTemplate"/>
 	</beans>
+	
+	<urp>
+		<property name="excelexceptesuffix" value="ro_,ta_"></property>
+	</urp>
 </properties>
