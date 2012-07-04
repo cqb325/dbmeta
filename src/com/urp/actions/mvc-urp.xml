@@ -5,6 +5,8 @@
 		<action name="login">
 			<result name="success">/index.jsp</result>
 		</action>
+		<action name="loginOut">
+		</action>
 	</actions>
 	
 	<actions name="userGroupAction">
