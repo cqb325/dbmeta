@@ -31,5 +31,8 @@
 		<action name="validateExcel">
 			<result name="success">/module/excel/grid.jsp</result>
 		</action>
+		<action name="insertData">
+			<result name="success">/common/ajax.jsp</result>
+		</action>
 	</actions>
 </config>
