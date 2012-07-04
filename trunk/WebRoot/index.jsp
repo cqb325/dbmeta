@@ -54,7 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div id="north" class="panel">  </div>
+    <div id="north" class="panel">
+    ${user.ualias} &nbsp; <a href="userAction!loginOut.action">退出</a>
+    </div>
 	<div id="west" class="panel">
 		<div id="tree"></div>
 	</div>
