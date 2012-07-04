@@ -52,6 +52,9 @@ public class ExcelAcrion {
 	 */
 	public String insertData(){
 		try{
+			boolean ret = excelServiceImpl.insertData(tableid);
+			ContextPvd ctx = ApplicationMap.getContextPvd(this);
+			ctx.setRequestAttr("json", "{result:"+ret+"}");
 			return "success";
 		}catch (Exception e) {
 			e.printStackTrace();

@@ -26,4 +26,11 @@ public interface ExcelService {
 	 * @param rootpath
 	 */
 	public void deleteTemp(String rootpath);
+	
+	/**
+	 * 批量导入数据
+	 * @param tableid
+	 * @return
+	 */
+	public boolean insertData(String tableid);
 }
