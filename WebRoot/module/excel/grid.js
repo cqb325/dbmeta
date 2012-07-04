@@ -39,9 +39,25 @@ function createGrid(){
 }
 
 function initoperation(){
-	$(".update").click(function(){
-		if(grid && griddata){
-			alert(1);
+	$(".toolbar_bt.upload").click(function(){
+		var tableid = $("#tablename").val();
+		if(!tableid || tableid == ""){
+			$.Box.message("提示","请选择上传数据的表格");
+			return false;
 		}
+		if(grid && tableid != ""){
+			jQuery.ajax({
+				async: true,
+				dataType: "json",
+				type: "get",
+				url: "excelAction!insertData.action",
+				data: {tableid: tableid},
+				success: function(msg){
+					alert(msg.result);
+				}
+			});
+		}
+		
+		return false;
 	});
 }

@@ -39,7 +39,7 @@ body{
 		<div id="main">
 			<div class="toolbar ui-state-default">
 				<a href="#" class="toolbar_bt upload">上传数据</a>
-				<select id="tablename" name="tablename"><option>请选择</option>
+				<select id="tablename" name="tablename"><option value="">请选择</option>
 				<c:if test="${tables != null}">
 					<c:forEach items="${tables}" var="table">
 						<option value="${table.tableid}">${table.tablechnname}</option>
