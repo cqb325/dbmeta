@@ -37,6 +37,13 @@ public class UserAction {
 		return "logout";
 	}
 	
+	public String loginOut(){
+		ContextPvd ctx = ApplicationMap.getContextPvd(this);
+		ctx.logout();
+		return "logout";
+	}
+	
+	
 	public void setUserservice(UserService userservice) {
 		this.userservice = userservice;
 	}
