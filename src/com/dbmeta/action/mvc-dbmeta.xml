@@ -3,7 +3,7 @@
 <config>
 	<actions name="dbAction">
 		<action name="getAllManageredTables">
-			<result name="success">/module/table/index.jsp</result>
+			<result name="success">/module/table/manageredtablelist.jsp</result>
 			<result name="error">/common/error.jsp</result>
 		</action>
 		<action name="getAllTables">
