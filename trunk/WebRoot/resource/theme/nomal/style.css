@@ -27,7 +27,7 @@ a{
 	color: #555;
 	text-decoration: none;
 }
-a.toolbar_bt{
+a.toolbar_bt, a.op_col{
 	padding: 5px 8px;
 	padding-left: 30px;
 	border: 1px solid #ccc;
@@ -86,6 +86,16 @@ a.toolbar_bt.wrench{
 }
 a.toolbar_bt.upload{
 	background-image: url(images/upload.png);
+}
+a.op_col{
+	padding: 2px 8px;
+	padding-left: 30px;
+}
+a.op_col.delete{
+	background-image: url(images/cog_delete.png);
+}
+a.op_col.inter{
+	background-image: url(images/link.png);
 }
 
 div.oprang{
