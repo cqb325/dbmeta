@@ -161,7 +161,7 @@ public class DBManager {
 	 * @param jdbcTemplate2
 	 * @throws SQLException
 	 */
-	private void getTableInfo(JdbcTemplate jdbcTemplate2) throws SQLException {
+	public void getTableInfo(JdbcTemplate jdbcTemplate2) throws SQLException {
 		logger.info("正在初始化表格元数据...");
 		
 		String sql = "select tableserverid from ro_dict_table";
@@ -191,7 +191,7 @@ public class DBManager {
 	 * @param jdbcTemplate2
 	 * @throws SQLException
 	 */
-	private Table getTableInfoById(String tableid) throws SQLException {
+	public Table getTableInfoById(String tableid) throws SQLException {
 		logger.info("正在获取新表格元数据...");
 		
 		String sql1 = "select * from ro_dict_table where tableid='"+tableid+"'";
@@ -206,7 +206,7 @@ public class DBManager {
 	 * @param jdbcTemplate2
 	 * @throws SQLException 
 	 */
-	private void saveFiledInfoByTable(Table table) throws SQLException {
+	public void saveFiledInfoByTable(Table table) throws SQLException {
 		if(table != null){
 			String tableserverid = table.getTableserverid();
 			String tablename = table.getTablename();
@@ -230,7 +230,7 @@ public class DBManager {
 	 * @param jdbcTemplate2
 	 * @throws SQLException
 	 */
-	private Table getTableInfoByName(String serverid, String tablename) throws SQLException {
+	public Table getTableInfoByName(String serverid, String tablename) throws SQLException {
 		logger.info("正在获取新表格元数据...");
 		
 		String sql = "select * from ro_dict_table where tablename='"+tablename+"' and tableserverid='"+serverid+"'";
