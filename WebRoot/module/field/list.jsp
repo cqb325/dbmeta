@@ -4,6 +4,8 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 String tableid = request.getParameter("tableid");
+String tablename = request.getParameter("tablename");
+String tableserverid = request.getParameter("tableserverid");
 %>
 <!DOCTYPE HTML>
 <html>
@@ -104,12 +106,21 @@ String tableid = request.getParameter("tableid");
 				edit();
 				return false;
 			});
+			$(".toolbar_bt.extracte").click(function(){
+				extracte();
+				return false;
+			});
 			
+			
+			initgrid("dbAction!getAllManageredFields.action");
+		});
+		
+		function initgrid(url){
 			$.ajax({
 				type: "POST",
 				dataType: "json",
 				async: true,
-				url: "dbAction!getAllManageredFields.action",
+				url: url,
 				data: {tableid: "<%=tableid%>"},
 				success: function(msg){
 					for(var i in msg){
@@ -136,6 +147,9 @@ String tableid = request.getParameter("tableid");
 						{id:"fieldeditable", name:"编辑", width:95, minWidth:95, field:"fieldeditable", fieldtype: 2, formatcode: keycode},
 						{id:"showable", name:"显示", width:95, minWidth:95, field:"showable", fieldtype: 2, formatcode: keycode}
 					];
+					if(grid){
+						grid.destroy();
+					}
 					grid = $("#grid").Grid({
 						columns: columns,
 						data: msg,
@@ -152,8 +166,7 @@ String tableid = request.getParameter("tableid");
 					});
 				}
 			});
-		});
-		
+		}
 		function edit(){
 			if(!grid.selectedRowIds.length){
 				jQuery.Box.warning("警告","请选择一条记录提交修改");
@@ -198,6 +211,15 @@ String tableid = request.getParameter("tableid");
 				});
 			}
 		}
+		
+		
+		
+		function extracte(){
+			var url = "<%=path %>/dbAction!addUMF2Manager.action?tableid=<%=tableid%>&tablename=<%=tablename%>&serverid=<%=tableserverid%>";
+			initgrid(url);
+			jQuery.Box.message("提示","数据提取成功！");
+			return false;
+		}
 	</script>
   </head>
   
@@ -205,6 +227,7 @@ String tableid = request.getParameter("tableid");
   	<div id="client">
   		<div class="toolbar ui-state-default">
   			<a href="#" class="toolbar_bt edit">更新修改</a>
+  			<a href="#" class="toolbar_bt extracte">提取字段元数据</a>
   		</div>
   		<div id="oprang">
   			<div id="grid"></div>

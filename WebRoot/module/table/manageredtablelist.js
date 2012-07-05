@@ -120,8 +120,11 @@ function viewTableFields(obj){
 	var connector = initConnector({tablename: tablename});
 	connector.connector(function(){
 		if(connector.records && connector.records.length){
-			var tableid = connector.records[0].get("tableid");
-			var url = "module/field/list.jsp?tableid="+tableid;
+			var record = connector.records[0];
+			var tableid = record.get("tableid");
+			var tablename = record.get("tablename");
+			var tableserverid = record.get("tableserverid");
+			var url = "module/field/list.jsp?tableid="+tableid+"&tablename="+tablename+"&tableserverid="+tableserverid;
 			window.location.href=url;
 		}
 	});
