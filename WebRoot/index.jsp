@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>CQB</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="plugins/cui/themes/theme.css">
+    <link href="<%=path %>/resource/theme/nomal/style.css" rel="stylesheet" type="text/css"/>
 	<link rel="icon" href="logo.png" type="image/png" />
 	<script type="text/javascript" src="plugins/lib/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="plugins/lib/head.load.min.js"></script>
@@ -49,13 +50,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		background-color: #DAB88A;
 		font: 18px 微软雅黑;
 	}
-	
+	#userinfo{
+		position:absolute;
+		right: 0px;
+		top: 0px;
+		bottom: 0px;
+		font-size: 11px;
+	}
+	#userimg{
+		width: 54px;
+		height: 100%;
+		float: left;
+	}
+	.logout{
+		display: block;
+		margin-top: 5px;
+		white-space: nowrap;
+		float: left;
+	}
 	</style>
   </head>
   
   <body>
     <div id="north" class="panel">
-    ${user.ualias} &nbsp; <a href="userAction!loginOut.action">退出</a>
+	    <div id="userinfo">
+	    	<div id="userimg">
+	    		<img src="resource/userimg/${user.uimg}">
+	    	</div>
+	    	<span style="cursor: default; margin-top: 5px;">${user.ualias}</span>
+	    	<a class="logout" href="userAction!loginOut.action">退出系统</a>
+	    </div>
     </div>
 	<div id="west" class="panel">
 		<div id="tree"></div>
