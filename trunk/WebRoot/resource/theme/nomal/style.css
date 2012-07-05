@@ -45,6 +45,9 @@ a.toolbar_bt.add{
 a.toolbar_bt.delete{
 	background-image: url(images/cog_delete.png);
 }
+a.toolbar_bt.extracte{
+	background-image: url(images/extracte.png);
+}
 a.toolbar_bt.editUg{
 	background-image: url(images/group_grey_edit.png);
 }
