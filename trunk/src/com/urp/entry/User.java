@@ -8,6 +8,7 @@ public class User {
 	private String ualias;	//用户昵称
 	private String uemail;
 	private String uphone;
+	private String uimg;
 	public String getUid() {
 		return uid;
 	}
@@ -49,5 +50,11 @@ public class User {
 	}
 	public void setUphone(String uphone) {
 		this.uphone = uphone;
+	}
+	public String getUimg() {
+		return uimg;
+	}
+	public void setUimg(String uimg) {
+		this.uimg = uimg;
 	}
 }

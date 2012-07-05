@@ -30,6 +30,10 @@
 			<link name="success" action="dbAction">getAllManageredTables</link>
 			<result name="error">/common/error.jsp</result>
 		</action>
+		<action name="addUMF2Manager">
+			<link name="success" action="dbAction">getAllManageredFields</link>
+			<result name="error">/common/error.jsp</result>
+		</action>
 	</actions>
 	<actions name="fieldAction">
 		<action name="editField">

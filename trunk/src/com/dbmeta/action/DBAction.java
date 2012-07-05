@@ -78,6 +78,20 @@ public class DBAction {
 	}
 	
 	/**
+	 * 添加表格到管理
+	 * @return
+	 */
+	public String addUMF2Manager(){
+		try {
+			fieldService.addUMF2Manager(tableid, tablename, serverid);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "success";
+	}
+	
+	/**
 	 * 所有已经管理的字段
 	 * @return
 	 */
