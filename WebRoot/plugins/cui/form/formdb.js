@@ -189,6 +189,20 @@
 					xml.push('>');
 					xml.push(filedvalue);
 					xml.push('</field>');
+				}else{
+					if(element.value == null){
+						continue;
+					}
+					//字符串、大字段可以
+					if(fieldmeta.getfieldtype() == 1 || fieldmeta.getfieldtype() == 7){
+						xml.push('<field ');
+						xml.push('id="'+filedname+'" ');
+						xml.push('type="'+fieldmeta.getfieldtype()+'" ');
+						xml.push('iskey="'+fieldmeta.getfieldiskey()+'" ');
+						xml.push('>');
+						xml.push(filedvalue);
+						xml.push('</field>');
+					}
 				}
 			}
 			xml.push('<where>');
