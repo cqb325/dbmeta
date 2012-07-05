@@ -82,11 +82,15 @@
 	        	var metas = this.datasource.meta.fieldMetas;
 	        	for(var i in metas){
 	        		var fieldmeta = metas[i];
+					if(fieldmeta.getshowable() == 0){
+						continue;
+					}
 	        		var column = {};
 	        		column.id = fieldmeta.getfieldid();
 	        		column.name = fieldmeta.getfieldchnname();
 	        		column.field = fieldmeta.getfieldname();
 	        		column.fieldtype = fieldmeta.getfieldtype();
+					column.editable = fieldmeta.getfieldeditable() == 0 ? false : true;
 	        		if(fieldmeta.getcodetable()){
 	        			//判断是否存在代码表
 	        			var flag = false;
