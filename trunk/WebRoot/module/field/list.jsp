@@ -12,6 +12,7 @@ String tableid = request.getParameter("tableid");
     
     <title></title>
     <link href="<%=path %>/plugins/cui/themes/theme.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=path %>/resource/theme/nomal/style.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="<%=path %>/plugins/lib/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/plugins/lib/head.load.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/plugins/cui/jsloader.js"></script>
@@ -23,10 +24,17 @@ String tableid = request.getParameter("tableid");
 	#grid{
 		position: absolute;
 		left: 1px;
-		top: 0px;
+		top: 1px;
 		bottom: 2px;
 		right: 1px;
 		border: 1px solid #ccc;
+	}
+	#oprang{
+		position: absolute;
+		left: 0px;
+		top: 32px;
+		bottom: 0px;
+		right: 0px;
 	}
 	body{
 		font-size: 12px;
@@ -75,14 +83,6 @@ String tableid = request.getParameter("tableid");
 			"-1": "是"
 		}
 		var columns = [];
-		var buttons = [
-			{
-				id: "editbt",
-				title: "修改",
-				handler: edit,
-				skin: "green"
-			}
-		];
 		//表格对象
 		var grid = null;
 		//CUIConnector对象
@@ -98,9 +98,13 @@ String tableid = request.getParameter("tableid");
 			});
 			
 			$("#client").Panel({
-				anchor: "client",
-				tbar: buttons
+				anchor: "client"
 			});
+			$(".toolbar_bt.edit").click(function(){
+				edit();
+				return false;
+			});
+			
 			$.ajax({
 				type: "POST",
 				dataType: "json",
@@ -185,12 +189,13 @@ String tableid = request.getParameter("tableid");
 				}
 				xml.push('</records>');
 				
-				var result = connector.execute(xml.join(""));
-				if(result){
-					jQuery.Box.message("提示","数据修改成功！");
-				}else{
-					jQuery.Box.error("错误","数据修改失败！");
-				}
+				connector.execute(xml.join(""), null, function(result){
+					if(result){
+						jQuery.Box.message("提示","数据修改成功！");
+					}else{
+						jQuery.Box.error("错误","数据修改失败！");
+					}
+				});
 			}
 		}
 	</script>
@@ -198,7 +203,12 @@ String tableid = request.getParameter("tableid");
   
   <body>
   	<div id="client">
-  		<div id="grid"></div>
+  		<div class="toolbar ui-state-default">
+  			<a href="#" class="toolbar_bt edit">更新修改</a>
+  		</div>
+  		<div id="oprang">
+  			<div id="grid"></div>
+  		</div>
   	</div>
   </body>
 </html>

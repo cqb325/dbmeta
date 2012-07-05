@@ -10,6 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <title></title>
     <link href="<%=path %>/plugins/cui/themes/theme.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=path %>/resource/theme/nomal/style.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="<%=path %>/plugins/lib/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/plugins/lib/head.load.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/plugins/cui/jsloader.js"></script>
@@ -54,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			connector.connector(function(){
 				grid = $("#grid").Grid({
 					columns: columns,
-					op_bts: [{name: "操作", id: "#op_col", data:'<a class="cui-button op_col green">查看数据</a>'}],
+					op_bts: [{name: "操作", id: "#op_col", data:'<a href="#" class="op_col inter">查看数据</a>'}],
 					title: "表格列表",
 					pageable: true,
 					sortable: true,

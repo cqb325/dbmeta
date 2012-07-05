@@ -12,6 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="<%=path %>/module/common.css" rel="stylesheet" type="text/css"/>
+<link href="<%=path %>/resource/theme/nomal/style.css" rel="stylesheet" type="text/css"/>
+<link href="<%=path %>/plugins/lib/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="<%=path %>/plugins/lib/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="<%=path %>/plugins/lib/head.load.min.js"></script>
 <script type="text/javascript" src="<%=path %>/plugins/cui/jsloader.js"></script>
@@ -21,17 +23,14 @@ JSLoader.load("Scroll,Util");
 JSLoader.ready(function() {
 	var bodyDimension = CUI.Util.getBodyDimensions();
 	var oph = $("#op_area").height();
-	$("#main").css({
-		width: bodyDimension.width,
-		height: bodyDimension.height - oph - 2
-	}).Scroll();
+	$("#main").Scroll();
 	
 	$(".table_list tr").click(function(){
 		$(".table_list tr.selected").removeClass("selected");
 		$(this).addClass("selected");
 	});
 	//提取元数据
-	$("a.submit").click(function(){
+	$("a.toolbar_bt.add").click(function(){
 		if($(".table_list tr.selected").length){
 			var tablename = $(".table_list tr.selected").text();
 			tablename = $.trim(tablename);
@@ -43,6 +42,11 @@ JSLoader.ready(function() {
 		}else{
 			alert("请选择一个表!");
 		}
+		return false;
+	});
+	
+	$("a.toolbar_bt.cancle").click(function(){
+		parent.tablelist.hide();
 		return false;
 	});
 });
@@ -62,12 +66,20 @@ function hasTableManagered(tablename){
 }
 </script>
 <style type="text/css">
-body{
-	margin: 0px;
-	padding: 0px;
+#main{
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 33px;
 }
 #op_area{
 	text-align: center;
+	position:absolute;
+	height: 33px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
 }
 .table_list tr.selected{
 	background-color: #91BD09;
@@ -89,9 +101,9 @@ body{
 	    	</tbody>
 	    </table>
 </div>
-<div id="op_area">
-	<a class="button submit">提取元数据</a>
-	<a class="button cancle">取消</a>
+<div id="op_area" class="toolbar ui-state-default">
+	<a href="#" class="toolbar_bt add">提取元数据</a>
+	<a href="#" class="toolbar_bt cancle">取消</a>
 </div>
 </body>
 </html>
