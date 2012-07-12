@@ -13,7 +13,6 @@
 <script type="text/javascript" src="plugins/lib/jquery.event.drag-2.0.min.js"></script>
 <script type="text/javascript" src="plugins/lib/jquery-ui-1.8.16.custom.min.js"></script>
 <link rel="stylesheet" href="plugins/lib/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" charset="utf-8" />
-<script type="text/javascript" src="plugins/lib/md5.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#username").focus();
@@ -34,14 +33,13 @@
 	function formsubmit(){
 		var dataform = $("#dataform")[0];
 		var username = $("#username").val();
-		var password = $("#_password").val();
+		var password = $("#password").val();
 		if($.trim(username) == ""){
 			return false;
 		}
 		if($.trim(password) == ""){
 			return false;
 		}
-		$("#password").val(faultylabs.MD5(password));
 		dataform.submit();
 	}
 </script>
@@ -98,9 +96,8 @@ label{
 		
 		<div class="formfield">
 			<label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码: </label>
-			<input type="text" name="_password" id="_password" class="input" placeholder="密码">
+			<input type="text" name="password" id="password" class="input" placeholder="密码">
 		</div>
-		<input type="hidden" name="password" id="password">
 		<div class="formfield formcontrol">
 			<a href="#" class="cui-button yellow form_bt" id="submit_bt">登录</a>
 			<a href="#" class="cui-button yellow form_bt">取消</a>
