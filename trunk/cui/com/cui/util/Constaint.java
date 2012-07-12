@@ -21,19 +21,19 @@ public class Constaint {
 	public final static String CUI_EXECUTE_OPTYPE_UPDATE = "update";
 	public final static String CUI_EXECUTE_OPTYPE_DELETE = "delete";
 	
-	//×Ö·û´®
+	//å­—ç¬¦ä¸²
 	public final static int CUI_DATATYPE_STRING = 1;
-	//Êý×Ö
+	//æ•°å­—
 	public final static int CUI_DATATYPE_NUMBER = 2;
-	//ÈÕÆÚ
+	//æ—¥æœŸ
 	public final static int CUI_DATATYPE_DATE = 3;
-	//ÈÕÆÚÊ±¼ä
+	//æ—¥æœŸæ—¶é—´
 	public final static int CUI_DATATYPE_DATETIME = 4;
-	//²¼¶ûÖµ
+	//å¸ƒå°”å€¼
 	public final static int CUI_DATATYPE_BOOLEAN = 5;
-	//°Ù·Ö±È
+	//ç™¾åˆ†æ¯”
 	public final static int CUI_DATATYPE_Percent = 6;
-	//´ó×Ö¶Î
+	//å¤§å­—æ®µ
 	public final static int CUI_DATATYPE_Text = 7;
 	
 	public enum OPERATER{

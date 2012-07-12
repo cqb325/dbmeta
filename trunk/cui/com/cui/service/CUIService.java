@@ -2,13 +2,12 @@ package com.cui.service;
 
 import java.util.Map;
 
-import org.dom4j.Document;
-
 public interface CUIService {
 	/**
-	 * 执行
-	 * @param paramsMap 页面参数
+	 * 鎵ц
+	 * @param paramsMap 椤甸潰鍙傛暟
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public String excecute(Map paramsMap);
 }
