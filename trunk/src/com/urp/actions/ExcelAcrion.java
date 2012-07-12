@@ -9,7 +9,6 @@ import com.cqb.action.FormFile;
 import com.cqb.core.ApplicationMap;
 import com.cqb.core.ContextPvd;
 import com.dbmeta.entry.Table;
-import com.dbmeta.util.DBManager;
 import com.ioc.annotation.AutoWired;
 import com.ioc.annotation.Server;
 import com.urp.service.impl.ExcelServiceImpl;
@@ -23,6 +22,7 @@ public class ExcelAcrion {
 	@AutoWired
 	private ExcelServiceImpl excelServiceImpl;
 
+	@SuppressWarnings("deprecation")
 	public String validateExcel(){
 		try{
 			ContextPvd ctx = ApplicationMap.getContextPvd(this);

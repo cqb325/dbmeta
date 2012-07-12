@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.at21.jdbc.core.JdbcTemplate;
 import com.dbmeta.entry.Field;
-import com.dbmeta.util.DBManager;
 import com.dbmeta.util.GetFieldMeta;
 import com.dbmeta.util.Util;
 import com.ioc.annotation.AutoWired;
@@ -38,20 +37,20 @@ public class FieldService {
 	}
 	
 	/**
-	 * Ìí¼Ó×Ö¶ÎÔªÊı¾İ¹ÜÀí
+	 * æ·»åŠ å­—æ®µå…ƒæ•°æ®ç®¡ç†
 	 * @param serverid
 	 * @param tablename
 	 * @throws SQLException
 	 */
 	public void addFiledsManager(String serverid, String tablename) throws SQLException {
-		//ÏÈÉ¾³ı
+		//å…ˆåˆ é™¤
 		String delsql = "delete from ro_dict_field where tableserverid=? and tablename=?";
 		List<Object> delparams = new ArrayList<Object>();
 		delparams.add(serverid);
 		delparams.add(tablename);
 		jdbcTemplate.execute(delsql, delparams.toArray());
 		
-		//ºóÌí¼ÓÉ¾³ı
+		//åæ·»åŠ åˆ é™¤
 		List<Field> fields = GetFieldMeta.getFieldsInfo(jdbcTemplate, tablename, serverid);
 		List<Object[]> params = new ArrayList<Object[]>();
 		for(int i=0; i< fields.size(); i++){
@@ -76,7 +75,7 @@ public class FieldService {
 	}
 	
 	/**
-	 * ¹ÜÀíÃ»ÓĞ¹ÜÀíµÄ×Ö¶Î
+	 * ç®¡ç†æ²¡æœ‰ç®¡ç†çš„å­—æ®µ
 	 * @param tableid
 	 * @param tablename
 	 * @param serverid
@@ -88,7 +87,7 @@ public class FieldService {
 				addFiledsManager(serverid,tablename);
 			}else{
 				List<Field> tablefields = GetFieldMeta.getFieldsInfo(jdbcTemplate, tablename, serverid);
-				//ÓĞ×Ö¶ÎÃ»ÓĞ¹ÜÀí
+				//æœ‰å­—æ®µæ²¡æœ‰ç®¡ç†
 				if(tablefields.size() > fields.size()){
 					List<Object[]> params = new ArrayList<Object[]>();
 					for(int j = 0; j<tablefields.size(); j++){

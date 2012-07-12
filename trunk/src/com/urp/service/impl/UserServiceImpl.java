@@ -9,6 +9,7 @@ import com.ioc.annotation.AutoWired;
 import com.ioc.annotation.Resposibility;
 import com.urp.entry.User;
 import com.urp.service.UserService;
+import com.urp.utils.Md5;
 
 @Resposibility
 public class UserServiceImpl implements UserService{
@@ -26,7 +27,8 @@ public class UserServiceImpl implements UserService{
 		
 		List<Object> list = new ArrayList<Object>();
 		list.add(user.getUsername());
-		list.add(user.getPassword());
+		String psw = Md5.encode(user.getPassword());
+		list.add(psw);
 		
 		try {
 			User getUser = jdbcTemplate.queryForBean(sql, list, User.class);

@@ -13,6 +13,7 @@ public class Table {
 	private int tableclass;
 	private int tablecreateverid;
 	private String tableserverid;
+	private String tabledesiner;
 	
 	private List<Field> fields;
 	private Map<String, Field> fieldsmap;
@@ -82,5 +83,11 @@ public class Table {
 	}
 	public void setFieldsmap(Map<String, Field> fieldsmap) {
 		this.fieldsmap = fieldsmap;
+	}
+	public String getTabledesiner() {
+		return tabledesiner;
+	}
+	public void setTabledesiner(String tabledesiner) {
+		this.tabledesiner = tabledesiner;
 	}
 }

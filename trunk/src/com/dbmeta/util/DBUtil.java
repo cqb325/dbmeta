@@ -23,8 +23,8 @@ public class DBUtil {
 	}
 	
 	/**
-	 * »ñÈ¡url
-	 * @param dbtype Êı¾İ¿âÀàĞÍ
+	 * è·å–url
+	 * @param dbtype æ•°æ®åº“ç±»å‹
 	 * 1: mysql
 	 * 2: oracle
 	 * 3: sqlserver

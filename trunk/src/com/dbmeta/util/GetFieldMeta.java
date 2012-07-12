@@ -13,7 +13,7 @@ import com.dbmeta.entry.Field;
 public class GetFieldMeta {
 	
 	/**
-	 * »ñÈ¡¸Ã±íµÄ×Ö¶ÎĞÅÏ¢
+	 * è·å–è¯¥è¡¨çš„å­—æ®µä¿¡æ¯
 	 * @param jdbcTemplate
 	 * @param tablename
 	 * @param serverid
@@ -22,17 +22,17 @@ public class GetFieldMeta {
 	public static List<Field> getFieldsInfo(JdbcTemplate jdbcTemplate, String tablename, String serverid){
 		List<Field> fields = new ArrayList<Field>();
 		try {
-			//»ñÈ¡×Ö¶ÎÔªÊı¾İ
+			//è·å–å­—æ®µå…ƒæ•°æ®
 			ResultSet rs = jdbcTemplate.getDataSource().getConnection().getMetaData().getColumns(null, null, tablename, "%");
-			//»ñÈ¡Ö÷¼üĞÅÏ¢
+			//è·å–ä¸»é”®ä¿¡æ¯
 			ResultSet keyrs = jdbcTemplate.getDataSource().getConnection().getMetaData().getPrimaryKeys(null,null,tablename);
-			//±£´æÖ÷¼üĞÅÏ¢
+			//ä¿å­˜ä¸»é”®ä¿¡æ¯
 			Map<String, Boolean> iskey = new HashMap<String, Boolean>();
 			while(keyrs.next()){
 				iskey.put(keyrs.getString("COLUMN_NAME"), true);
 			}
 			while(rs.next()){
-				//´´½¨×Ö¶Î¶ÔÏó
+				//åˆ›å»ºå­—æ®µå¯¹è±¡
 				Field field = new Field();
 				String fieldname = rs.getString("COLUMN_NAME");
 				int fieldiskey = 0;
@@ -83,7 +83,7 @@ public class GetFieldMeta {
 	}
 	
 	public static void main(String[] args) {
-		JdbcTemplate jdbct = new JdbcTemplate();
-		List<Field> list = GetFieldMeta.getFieldsInfo(jdbct, "test","-1");
+		//JdbcTemplate jdbct = new JdbcTemplate();
+		//List<Field> list = GetFieldMeta.getFieldsInfo(jdbct, "test","-1");
 	}
 }

@@ -21,7 +21,7 @@ public class DBService {
 	private JdbcTemplate jdbcTemplate;
 	
 	/**
-	 * »ñÈ¡ËùÓĞµÄ±íÃû
+	 * è·å–æ‰€æœ‰çš„è¡¨å
 	 * @param pageSize 
 	 * @param page 
 	 * @return
@@ -34,7 +34,7 @@ public class DBService {
 	}
 	
 	/**
-	 * »ñÈ¡ËùÓĞÒÑ¾­¹ÜÀíµÄµÄ±íÃû
+	 * è·å–æ‰€æœ‰å·²ç»ç®¡ç†çš„çš„è¡¨å
 	 * @param pageSize 
 	 * @param page 
 	 * @return
@@ -52,7 +52,7 @@ public class DBService {
 	}
 	
 	/**
-	 * Ìí¼Ó±í¸ñµ½¹ÜÀí
+	 * æ·»åŠ è¡¨æ ¼åˆ°ç®¡ç†
 	 * @param serverid
 	 * @param tablename
 	 * @throws SQLException 
@@ -92,7 +92,7 @@ public class DBService {
 	}
 	
 	/**
-	 * »ñÈ¡×Ö¶ÎĞÅÏ¢
+	 * è·å–å­—æ®µä¿¡æ¯
 	 * @param fieldid
 	 * @return
 	 * @throws SQLException
@@ -106,7 +106,7 @@ public class DBService {
 	}
 	
 	/**
-	 * ¸Ã±íÊÇ·ñÒÑ¾­¹ÜÀí
+	 * è¯¥è¡¨æ˜¯å¦å·²ç»ç®¡ç†
 	 * @param serverid
 	 * @param tablename
 	 * @return
@@ -126,7 +126,7 @@ public class DBService {
 	}
 	
 	/**
-	 * É¾³ı±í¸ñ¹ÜÀíÒÔ¼°¸Ã±í¸ñµÄ×Ö¶ÎĞÅÏ¢
+	 * åˆ é™¤è¡¨æ ¼ç®¡ç†ä»¥åŠè¯¥è¡¨æ ¼çš„å­—æ®µä¿¡æ¯
 	 * @param serverid
 	 * @param tablename
 	 * @throws SQLException 
