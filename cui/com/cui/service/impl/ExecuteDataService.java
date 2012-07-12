@@ -24,6 +24,7 @@ public class ExecuteDataService implements CUIService {
 	
 	private Logger logger = Logger.getLogger(ExecuteDataService.class);
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String excecute(Map paramsMap) {
 		try{
@@ -58,7 +59,7 @@ public class ExecuteDataService implements CUIService {
 	}
 	
 	private Boolean delete(String optype, Element root) throws SQLException {
-		//¶àÌõ¼ÇÂ¼
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		List<?> records = root.selectNodes("record");
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		for(int i=0; i< records.size(); i++){
@@ -72,7 +73,7 @@ public class ExecuteDataService implements CUIService {
 			for(Iterator<?> whereiter = wherenodes.iterator(); whereiter.hasNext();){
 				Element field = (Element)whereiter.next();
 				String fieldname = field.attributeValue("id");
-				String fieldtype = field.attributeValue("type");
+//				String fieldtype = field.attributeValue("type");
 				Object fieldvalue = field.getTextTrim();
 				where.append(fieldname+"=? ");
 				if(whereiter.hasNext()){
@@ -88,7 +89,7 @@ public class ExecuteDataService implements CUIService {
 	}
 
 	private Boolean update(String optype, Element root) throws SQLException {
-		//¶àÌõ¼ÇÂ¼
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		List records = root.selectNodes("record");
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		for(int i=0; i< records.size(); i++){
@@ -136,7 +137,7 @@ public class ExecuteDataService implements CUIService {
 	}
 
 	/**
-	 * ÐÂÔöÊý¾Ý
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param optype
 	 * @param root
 	 * @return
@@ -144,7 +145,7 @@ public class ExecuteDataService implements CUIService {
 	 */
 	@SuppressWarnings("unchecked")
 	private Boolean insert(String optype, Element root) throws SQLException {
-		//¶àÌõ¼ÇÂ¼
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		List records = root.selectNodes("record");
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		for(int i=0; i< records.size(); i++){

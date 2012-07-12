@@ -1,16 +1,16 @@
 package com.cui.service.impl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.dom4j.Document;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.at21.jdbc.core.JdbcTemplate;
 import com.cui.service.CUIService;
 import com.cui.util.Constaint;
 import com.dbmeta.entry.CodeTable;
@@ -20,7 +20,10 @@ import com.dbmeta.entry.Table;
 import com.dbmeta.util.DBManager;
 
 public class MetaDataService implements CUIService {
-
+	
+	private JdbcTemplate jdbcTemplate;
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String excecute(Map paramsMap) {
 		String datatype = paramsMap.get(Constaint.PARAM_DATATYPE).toString();
@@ -33,12 +36,13 @@ public class MetaDataService implements CUIService {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	private String getJSONMeta(Map paramsMap) {
 		String tableId = (String)paramsMap.get(Constaint.PARAM_TABLEID);
 		String tablename = DBManager.getTableNameById(tableId);
 		Table table = DBManager.getTableById(tableId);
 		
-		JSONObject fieldjson = new JSONObject();
+//		JSONObject fieldjson = new JSONObject();
 		List<Field> fields = table.getFields();
 		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
 		for(Iterator<Field> iter = fields.iterator(); iter.hasNext();){
@@ -49,7 +53,7 @@ public class MetaDataService implements CUIService {
 				java.lang.reflect.Field fieldfield =  fieldfields[j];
 				String fieldname = fieldfield.getName();
 				fieldfield.setAccessible(true);
-				Class<?> fieldtype = fieldfield.getType();
+//				Class<?> fieldtype = fieldfield.getType();
 				String value = null;
 				try {
 					Object cellvalue = fieldfield.get(field);
@@ -90,9 +94,11 @@ public class MetaDataService implements CUIService {
 		json.put("fields", JSONArray.fromObject(result).toString());
 		json.put("tablename", tablename);
 		json.put("tableid", tableId);
+		json.put("tabledesiner", getTableDesiner(tableId));
 		return json.toString();
 	}
 
+	@SuppressWarnings("unchecked")
 	private String getXMLMeta(Map paramsMap) {
 		String tableId = (String)paramsMap.get(Constaint.PARAM_TABLEID);
 		String tablename = DBManager.getTableNameById(tableId);
@@ -110,7 +116,7 @@ public class MetaDataService implements CUIService {
 				java.lang.reflect.Field fieldfield =  fieldfields[j];
 				String fieldname = fieldfield.getName();
 				fieldfield.setAccessible(true);
-				Class<?> fieldtype = fieldfield.getType();
+//				Class<?> fieldtype = fieldfield.getType();
 				String value = null;
 				try {
 					Object cellvalue = fieldfield.get(field);
@@ -126,7 +132,7 @@ public class MetaDataService implements CUIService {
 			}
 			xml.append(">");
 			String codetableid = field.getCodetableid();
-			//���ڴ����
+			//存在代码表
 			if(codetableid != null && !codetableid.trim().equals("")){
 				CodeTable codetable = DBManager.getCodeTableById(codetableid);
 				String codetabletitle = codetable.getCodetabletitle();
@@ -147,6 +153,7 @@ public class MetaDataService implements CUIService {
 		return xml.toString();
 	}
 
+	@SuppressWarnings("unused")
 	private String toStringValue(Class<?> fieldtype, Object object) {
 		String value = null;
 		if(fieldtype.equals(int.class) || fieldtype.equals(double.class)
@@ -154,5 +161,30 @@ public class MetaDataService implements CUIService {
 			value = object + "";
 		}
 		return value;
+	}
+	
+	/**
+	 * 根据表id获取该表的设计
+	 * @param tableid
+	 * @return
+	 */
+	private String getTableDesiner(String tableid){
+		String sql = "select * from ro_dict_table where tableid=?";
+		List<Object> params = new ArrayList<Object>();
+		params.add(tableid);
+		
+		String desiner = null;
+		if(jdbcTemplate == null){
+			jdbcTemplate = new JdbcTemplate();
+			
+			try {
+				Table table = jdbcTemplate.queryForBean(sql, params, Table.class);
+				desiner = table.getTabledesiner();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return desiner;
 	}
 }

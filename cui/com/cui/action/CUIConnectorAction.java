@@ -1,9 +1,6 @@
 package com.cui.action;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -17,9 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
 
 import com.cui.service.CUIService;
 import com.cui.util.CUIServiceFactory;
@@ -50,6 +44,7 @@ public class CUIConnectorAction extends HttpServlet{
 	
 	private String c_action;
 	
+	@SuppressWarnings("unchecked")
 	private Map<String, String> getParamMap(HttpServletRequest req){
 		try {
 			req.setCharacterEncoding("UTF-8");

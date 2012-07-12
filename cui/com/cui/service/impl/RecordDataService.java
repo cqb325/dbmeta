@@ -39,20 +39,20 @@ public class RecordDataService implements CUIService{
 		String tableId = (String)paramsMap.get(Constaint.PARAM_TABLEID);
 		String tablename = DBManager.getTableNameById(tableId);
 		if(tablename == null){
-			logger.info("²»´æÔÚ¸Ã±í¸ñ:"+tablename);
-			throw new RuntimeException("²»´æÔÚ¸Ã±í¸ñ:"+tablename);
+			logger.info("ä¸å­˜åœ¨è¯¥è¡¨æ ¼:"+tablename);
+			throw new RuntimeException("ä¸å­˜åœ¨è¯¥è¡¨æ ¼:"+tablename);
 		}
 		String c_pageSize = paramsMap.get(Constaint.PARAM_PAGESIZE);
 		if(c_pageSize == null){
-			logger.info("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGESIZE);
-			throw new RuntimeException("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGESIZE);
+			logger.info("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGESIZE);
+			throw new RuntimeException("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGESIZE);
 		}
 		int pageSize = Integer.parseInt(c_pageSize);
 		
 		String c_pagenum = paramsMap.get(Constaint.PARAM_PAGENUM);
 		if(c_pagenum == null){
-			logger.info("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGENUM);
-			throw new RuntimeException("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGENUM);
+			logger.info("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGENUM);
+			throw new RuntimeException("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGENUM);
 		}
 		int pagenum = Integer.parseInt(c_pagenum);
 		
@@ -83,24 +83,25 @@ public class RecordDataService implements CUIService{
 		return json.toString();
 	}
 
+	@SuppressWarnings("unchecked")
 	private String getXMLData(Map<String,String> paramsMap) {
 		String tableId = (String)paramsMap.get(Constaint.PARAM_TABLEID);
 		String tablename = DBManager.getTableNameById(tableId);
 		if(tablename == null){
-			logger.info("²»´æÔÚ¸Ã±í¸ñ:"+tablename);
-			throw new RuntimeException("²»´æÔÚ¸Ã±í¸ñ:"+tablename);
+			logger.info("ä¸å­˜åœ¨è¯¥è¡¨æ ¼:"+tablename);
+			throw new RuntimeException("ä¸å­˜åœ¨è¯¥è¡¨æ ¼:"+tablename);
 		}
 		String c_pageSize = paramsMap.get(Constaint.PARAM_PAGESIZE);
 		if(c_pageSize == null){
-			logger.info("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGESIZE);
-			throw new RuntimeException("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGESIZE);
+			logger.info("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGESIZE);
+			throw new RuntimeException("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGESIZE);
 		}
 		int pageSize = Integer.parseInt(c_pageSize);
 		
 		String c_pagenum = paramsMap.get(Constaint.PARAM_PAGENUM);
 		if(c_pagenum == null){
-			logger.info("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGENUM);
-			throw new RuntimeException("²»´æÔÚ²ÎÊı:"+Constaint.PARAM_PAGENUM);
+			logger.info("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGENUM);
+			throw new RuntimeException("ä¸å­˜åœ¨å‚æ•°:"+Constaint.PARAM_PAGENUM);
 		}
 		int pagenum = Integer.parseInt(c_pagenum);
 		
@@ -181,7 +182,7 @@ public class RecordDataService implements CUIService{
 	}
 	
 	/**
-	 * »ñÈ¡×Ö¶Îwhere
+	 * è·å–å­—æ®µwhere
 	 * @param fieldname
 	 * @param op
 	 * @param fv
