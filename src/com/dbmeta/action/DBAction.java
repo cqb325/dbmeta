@@ -1,7 +1,6 @@
 package com.dbmeta.action;
 
 import java.util.List;
-import java.util.Map;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -10,7 +9,6 @@ import com.at21.jdbc.support.PageNation;
 import com.cqb.core.ApplicationMap;
 import com.cqb.core.ContextPvd;
 import com.dbmeta.entry.Field;
-import com.dbmeta.entry.Table;
 import com.dbmeta.service.DBService;
 import com.dbmeta.service.FieldService;
 import com.ioc.annotation.AutoWired;

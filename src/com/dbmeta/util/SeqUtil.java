@@ -13,14 +13,14 @@ public class SeqUtil {
 	private JdbcTemplate jdbcTemplate;
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public SeqUtil(){
 		jdbcTemplate = new JdbcTemplate();
 	}
 	
 	/**
-	 * »ñÈ¡ÏÂÒ»¸öĞòÁĞ
+	 * è·å–ä¸‹ä¸€ä¸ªåºåˆ—
 	 * @param gsid
 	 * @return
 	 * @throws SQLException
@@ -32,7 +32,7 @@ public class SeqUtil {
 			case 1:{// GUID
 				return UUID.randomUUID().toString();
 			}
-			case 2:{// ×ÔÔö
+			case 2:{// è‡ªå¢
 				int position = old.getGsposition() + 1;
 				old.setGsposition(position);
 				updateSquence(old);
@@ -44,8 +44,8 @@ public class SeqUtil {
 	}
 	
 	/**
-	 * »ñÈ¡µ±Ç°ĞòÁĞ¶ÔÏó
-	 * @param gsid ĞòÁĞid
+	 * è·å–å½“å‰åºåˆ—å¯¹è±¡
+	 * @param gsid åºåˆ—id
 	 * @return
 	 * @throws SQLException
 	 */
@@ -58,7 +58,7 @@ public class SeqUtil {
 	}
 	
 	/**
-	 * ¸üĞÂĞòÁĞ
+	 * æ›´æ–°åºåˆ—
 	 * @param seq
 	 * @throws SQLException
 	 */

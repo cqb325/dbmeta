@@ -41,11 +41,11 @@ public class DBManager {
 	private Logger logger = Logger.getLogger(DBManager.class);
 	
 	/**
-	 * ³õÊ¼»¯
+	 * åˆå§‹åŒ–
 	 * @throws SQLException 
 	 */
 	public void init() throws SQLException{
-		logger.info("ÕıÔÚ³õÊ¼»¯ÔªÊı¾İ...");
+		logger.info("æ­£åœ¨åˆå§‹åŒ–å…ƒæ•°æ®...");
 		jdbcTemplate = new JdbcTemplate();
 		
 		getServerInfo(jdbcTemplate);
@@ -60,12 +60,12 @@ public class DBManager {
 	}
 	
 	/**
-	 * »ñÈ¡·şÎñĞÅÏ¢
+	 * è·å–æœåŠ¡ä¿¡æ¯
 	 * @param jdbcTemplate
 	 * @throws SQLException
 	 */
 	private void getServerInfo(JdbcTemplate jdbcTemplate) throws SQLException {
-		logger.info("ÕıÔÚ³õÊ¼»¯·şÎñĞÅÏ¢...");
+		logger.info("æ­£åœ¨åˆå§‹åŒ–æœåŠ¡ä¿¡æ¯...");
 		
 		String sql = "select * from ro_dict_dbserver";
 		List<DBServer> dbserver = jdbcTemplate.queryForBeans(sql, DBServer.class);
@@ -76,12 +76,12 @@ public class DBManager {
 	}
 
 	/**
-	 * »ñÈ¡Ö÷¼üĞÅÏ¢
+	 * è·å–ä¸»é”®ä¿¡æ¯
 	 * @param jdbcTemplate2
 	 * @throws SQLException 
 	 */
 	private void getSequenceInfo(JdbcTemplate jdbcTemplate2) throws SQLException {
-		logger.info("ÕıÔÚ³õÊ¼ĞòÁĞĞÅÏ¢...");
+		logger.info("æ­£åœ¨åˆå§‹åºåˆ—ä¿¡æ¯...");
 		
 		String sql = "select * from ro_dict_sequence";
 		List<Sequence> sequences = jdbcTemplate.queryForBeans(sql, Sequence.class);
@@ -93,12 +93,12 @@ public class DBManager {
 	}
 
 	/**
-	 * »ñÈ¡´úÂë±íĞÅÏ¢
+	 * è·å–ä»£ç è¡¨ä¿¡æ¯
 	 * @param jdbcTemplate
 	 * @throws SQLException 
 	 */
 	private void getCodeTableInfo(JdbcTemplate jdbcTemplate) throws SQLException {
-		logger.info("ÕıÔÚ³õÊ¼»¯´úÂë±í...");
+		logger.info("æ­£åœ¨åˆå§‹åŒ–ä»£ç è¡¨...");
 		
 		String sql = "select * from ro_dict_codetable";
 		List<CodeTable> codeTables = jdbcTemplate.queryForBeans(sql, CodeTable.class);
@@ -120,12 +120,12 @@ public class DBManager {
 	}
 	
 	/**
-	 * ×Ö¶ÎĞÅÏ¢
+	 * å­—æ®µä¿¡æ¯
 	 * @param jdbcTemplate2
 	 * @throws SQLException 
 	 */
 	private void getFiledInfo(JdbcTemplate jdbcTemplate2) throws SQLException {
-		logger.info("ÕıÔÚ³õÊ¼»¯×Ö¶ÎÔªÊı¾İ...");
+		logger.info("æ­£åœ¨åˆå§‹åŒ–å­—æ®µå…ƒæ•°æ®...");
 		
 		String sql = "select * from ro_dict_field";
 		fields = jdbcTemplate2.queryForBeans(sql, Field.class);
@@ -136,13 +136,13 @@ public class DBManager {
 			String tableserverid = (String)map.get("tableserverid");
 			for(Iterator<Table> tableiter = tables.iterator(); tableiter.hasNext(); ){
 				Table table = tableiter.next();
-				//Ä³Ò»¸öserverµÄ±í
+				//æŸä¸€ä¸ªserverçš„è¡¨
 				if(table.getTableserverid().equals(tableserverid)){
 					List<Field> list4table = new ArrayList<Field>();
 					Map<String, Field> fieldname_fieldmap = new HashMap<String, Field>();
 					for(Iterator<Field> fielditer = fields.iterator(); fielditer.hasNext(); ){
 						Field field = fielditer.next();
-						//Ä³Ò»¸öserverµÄ×Ö¶Î
+						//æŸä¸€ä¸ªserverçš„å­—æ®µ
 						if(table.getTablename().equals(field.getTablename())){
 							list4table.add(field);
 							fieldname_fieldmap.put(field.getFieldname(), field);
@@ -157,12 +157,12 @@ public class DBManager {
 	}
 
 	/**
-	 * »ñÈ¡±í¸ñĞÅÏ¢
+	 * è·å–è¡¨æ ¼ä¿¡æ¯
 	 * @param jdbcTemplate2
 	 * @throws SQLException
 	 */
 	public void getTableInfo(JdbcTemplate jdbcTemplate2) throws SQLException {
-		logger.info("ÕıÔÚ³õÊ¼»¯±í¸ñÔªÊı¾İ...");
+		logger.info("æ­£åœ¨åˆå§‹åŒ–è¡¨æ ¼å…ƒæ•°æ®...");
 		
 		String sql = "select tableserverid from ro_dict_table";
 		String sql1 = "select * from ro_dict_table";
@@ -187,12 +187,12 @@ public class DBManager {
 	}
 	
 	/**
-	 * »ñÈ¡±í¸ñĞÅÏ¢
+	 * è·å–è¡¨æ ¼ä¿¡æ¯
 	 * @param jdbcTemplate2
 	 * @throws SQLException
 	 */
 	public Table getTableInfoById(String tableid) throws SQLException {
-		logger.info("ÕıÔÚ»ñÈ¡ĞÂ±í¸ñÔªÊı¾İ...");
+		logger.info("æ­£åœ¨è·å–æ–°è¡¨æ ¼å…ƒæ•°æ®...");
 		
 		String sql1 = "select * from ro_dict_table where tableid='"+tableid+"'";
 		
@@ -202,7 +202,7 @@ public class DBManager {
 		return table;
 	}
 	/**
-	 * »ñÈ¡×Ö¶ÎĞÅÏ¢
+	 * è·å–å­—æ®µä¿¡æ¯
 	 * @param jdbcTemplate2
 	 * @throws SQLException 
 	 */
@@ -226,12 +226,12 @@ public class DBManager {
 	}
 	
 	/**
-	 * »ñÈ¡±í¸ñĞÅÏ¢
+	 * è·å–è¡¨æ ¼ä¿¡æ¯
 	 * @param jdbcTemplate2
 	 * @throws SQLException
 	 */
 	public Table getTableInfoByName(String serverid, String tablename) throws SQLException {
-		logger.info("ÕıÔÚ»ñÈ¡ĞÂ±í¸ñÔªÊı¾İ...");
+		logger.info("æ­£åœ¨è·å–æ–°è¡¨æ ¼å…ƒæ•°æ®...");
 		
 		String sql = "select * from ro_dict_table where tablename='"+tablename+"' and tableserverid='"+serverid+"'";
 		
@@ -243,7 +243,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ±£´æ±í¸ñĞÅÏ¢
+	 * ä¿å­˜è¡¨æ ¼ä¿¡æ¯
 	 * @param table
 	 */
 	public void saveTableInfo(Table table){
@@ -261,7 +261,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íid»ñÈ¡±íÃû³Æ
+	 * æ ¹æ®è¡¨idè·å–è¡¨åç§°
 	 * @param serverid
 	 * @param tableid
 	 * @return
@@ -271,7 +271,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íÃû»ñÈ¡±í¶ÔÏó
+	 * æ ¹æ®è¡¨åè·å–è¡¨å¯¹è±¡
 	 * @param serverid
 	 * @param tableid
 	 * @return
@@ -290,7 +290,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íÃû³Æ»ñÈ¡±íId
+	 * æ ¹æ®è¡¨åç§°è·å–è¡¨Id
 	 * @param serverid
 	 * @param tablename
 	 * @return
@@ -300,7 +300,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íId»ñÈ¡±í¶ÔÏó
+	 * æ ¹æ®è¡¨Idè·å–è¡¨å¯¹è±¡
 	 * @param serverid
 	 * @param tablename
 	 * @return
@@ -320,7 +320,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íid»ñÈ¡×Ö¶ÎÁĞ±í
+	 * æ ¹æ®è¡¨idè·å–å­—æ®µåˆ—è¡¨
 	 * @param serverid
 	 * @param tableid
 	 * @return
@@ -330,7 +330,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íÃû³Æ»ñÈ¡×Ö¶ÎÁĞ±í
+	 * æ ¹æ®è¡¨åç§°è·å–å­—æ®µåˆ—è¡¨
 	 * @param serverid
 	 * @param tablename
 	 * @return
@@ -340,7 +340,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íidºÍ×Ö¶ÎÃû³Æ»ñÈ¡×Ö¶Î
+	 * æ ¹æ®è¡¨idå’Œå­—æ®µåç§°è·å–å­—æ®µ
 	 * @param serverid
 	 * @param tableid
 	 * @param fieldname
@@ -351,7 +351,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ±íÃû³ÆºÍ×Ö¶ÎÃû³Æ»ñÈ¡×Ö¶Î
+	 * æ ¹æ®è¡¨åç§°å’Œå­—æ®µåç§°è·å–å­—æ®µ
 	 * @param serverid
 	 * @param tablename
 	 * @param fieldname
@@ -362,7 +362,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ´úÂë±íid»ñÈ¡´úÂë±í¶ÔÏó
+	 * æ ¹æ®ä»£ç è¡¨idè·å–ä»£ç è¡¨å¯¹è±¡
 	 * @param codetableid
 	 * @return
 	 */
@@ -371,7 +371,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ´úÂë±íid»ñÈ¡´úÂë±íÃû³Æ
+	 * æ ¹æ®ä»£ç è¡¨idè·å–ä»£ç è¡¨åç§°
 	 * @param codetableid
 	 * @return
 	 */
@@ -380,7 +380,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * »ñÈ¡´úÂë±íÁĞ±í
+	 * è·å–ä»£ç è¡¨åˆ—è¡¨
 	 * @param codetableid
 	 * @return
 	 */
@@ -397,7 +397,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ´úÂë±íidºÍ´úÂëÖµ»ñÈ¡´úÂëÖµ¶ÔÏó
+	 * æ ¹æ®ä»£ç è¡¨idå’Œä»£ç å€¼è·å–ä»£ç å€¼å¯¹è±¡
 	 * @param codetableid
 	 * @param code
 	 * @return
@@ -407,7 +407,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ´úÂë±íidºÍ´úÂëÖµ»ñÈ¡ÖĞÎÄÖµ
+	 * æ ¹æ®ä»£ç è¡¨idå’Œä»£ç å€¼è·å–ä¸­æ–‡å€¼
 	 * @param codetableid
 	 * @param code
 	 * @return
@@ -417,7 +417,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ÊÇ·ñ´æÔÚ¸Ã±í
+	 * æ˜¯å¦å­˜åœ¨è¯¥è¡¨
 	 * @param serverid
 	 * @param tablename
 	 * @return
@@ -427,7 +427,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ÊÇ·ñ´æÔÚ¸Ã±í
+	 * æ˜¯å¦å­˜åœ¨è¯¥è¡¨
 	 * @param tableid
 	 * @return
 	 */
@@ -436,8 +436,8 @@ public class DBManager {
 	}
 	
 	/**
-	 * ×Ö¶Î°´ÕÕpositionÅÅĞò
-	 * @param fields ½øĞĞÅÅĞòµÄ×Ö¶Î
+	 * å­—æ®µæŒ‰ç…§positionæ’åº
+	 * @param fields è¿›è¡Œæ’åºçš„å­—æ®µ
 	 */
 	private void sortFields(List<Field> fields){
 		Collections.sort(fields, new Comparator<Field>(){
@@ -449,7 +449,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İĞòÁĞid»ñÈ¡ĞòÁĞ¶ÔÏó
+	 * æ ¹æ®åºåˆ—idè·å–åºåˆ—å¯¹è±¡
 	 * @param gsid
 	 * @return
 	 */
@@ -458,7 +458,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * »ñÈ¡ÏÂÒ»¸öĞòÁĞ
+	 * è·å–ä¸‹ä¸€ä¸ªåºåˆ—
 	 * @param gsid
 	 * @return
 	 * @throws SQLException
@@ -469,7 +469,7 @@ public class DBManager {
 	}
 	
 	/**
-	 * ¸ù¾İ·şÎñid»ñÈ¡·şÎñ
+	 * æ ¹æ®æœåŠ¡idè·å–æœåŠ¡
 	 * @param rsid
 	 * @return
 	 */
