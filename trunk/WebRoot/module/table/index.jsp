@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -118,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="default_pgToolbar">
 		    	<tbody>
 		    		<tr><td>
-		    			<table border="0" cellspadding="0" cellspacing="0" class="default_pgPanel">
+		    			<table border="0" cellpadding="0" cellspacing="0" class="default_pgPanel">
 		    			<tbody><tr>
 		    				<td valign="middle"><div class="default_separator"></div></td>
 		    				<td valign="middle"><div class="default_pgBtn default_pgFirst" title="首页"></div></td>

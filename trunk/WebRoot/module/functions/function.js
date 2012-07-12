@@ -124,7 +124,8 @@ function initfloatform(){
 			title: "标题",
 			draggable: true,
 			fadehide: true,
-			height: "auto"
+			height: "auto",
+			width: "auto"
 		}).data("FloatDiv");
 		//表单操作
 		initFormListener();

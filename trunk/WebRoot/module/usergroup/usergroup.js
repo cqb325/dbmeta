@@ -130,7 +130,8 @@ function initfloatform(){
 			title: "标题",
 			draggable: true,
 			fadehide: true,
-			height: "auto"
+			height: "auto",
+			width: "auto"
 		}).data("FloatDiv");
 		//表单操作
 		initFormListener();
@@ -269,7 +270,7 @@ function addUser(){
 		});
 	});
 }
-
+/*
 function editUser(){
 	if (!grid.selectedRowIds.length || grid.selectedRowIds.length > 1) {
 		$.Box.message("提示","请选择一个用户进行修改");
@@ -297,7 +298,7 @@ function editUser(){
 		});
 		form.init();
 	});
-}
+}*/
 
 function deleteUser(){
 	if (!grid.selectedRowIds.length) {
@@ -364,7 +365,7 @@ function createUserTable(id){
 			title: "用户列表",
 			pageable: true,
 			sortable: true,
-			editable: true,
+			editable: false,
 			checkcolumn: true,
 			asyncEditorLoading: false,
 			datasource: connector

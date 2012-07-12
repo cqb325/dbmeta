@@ -43,6 +43,10 @@
          */
 		tableName: '',
 		
+		/**
+		 * 
+		 */
+		tabledesiner: null,
 		
 		_initialize : function(){
 			this.fieldMetasNameMap = {};

@@ -8,6 +8,8 @@
 	cuiPackage.Class("ComBox",cuiPackage.DBLink,{
 		label: null,
 		labelele: null,
+		listele: null,
+		list: null,
 		/**
 		 * @private
 		 * @description 初始化
@@ -28,7 +30,7 @@
 		},
 		
 		_create: function(){
-			/*var beauty = $("<span>").addClass("cui-inputtext-beauty").css("position","relative");
+			var beauty = $("<span>").addClass("cui-inputtext-beauty").css("position","relative");
 			jQuery("#"+this.name).wrap(beauty);
 			jQuery("#"+this.name).addClass("cui-inputtext");
 			this.labelele = jQuery("<label>").addClass("cui-inputtext-label").attr("for",this.name).html(this.label);
@@ -45,24 +47,78 @@
 				left: jQuery("#"+this.name).width() - 14,
 				top: 0
 			});
-			*/
+			
 			var codes = this.fieldmeta.codetable.codes;
-			var select = $("#"+this.name).empty();
+			var ul = jQuery("<ul>");
 			for(var i in codes){
 				var code = codes[i];
-				var option = $("<option>").html(code).attr("value", i);
-				select.append(option);
+				var li = jQuery("<li>").html(code).data("val",i);
+				ul.append(li);
 			}
+			this.listele.empty().append(ul);
+			
+			//列表组件
+			this.listele.List({
+				autoheight: true
+			});
+			
+			this.list =  this.listele.data("List");
+			
+			this.listele.css({
+				left: parseInt(jQuery("#"+this.name).css("margin-bottom")),
+				top: jQuery("#"+this.name).height() + parseInt(jQuery("#"+this.name).css("margin-bottom"))
+			});
+			this.list.hide();
 		},
 		
 		_listener: function(){
+			var self = this;
+			jQuery("#"+this.name).focus(function(){
+				$(this).addClass("cui-inputtext-focus");
+				if(jQuery.trim($(this).val()) == ""){
+					self.labelele.remove();
+				}
+			});
+			jQuery("#"+this.name).blur(function(){
+				$(this).removeClass("cui-inputtext-focus");
+				if(jQuery.trim($(this).val()) == ""){
+					$(this).parent(".cui-inputtext-beauty").append(self.labelele);
+				}
+			}).blur();
+			
+			jQuery(document).click(function(e){
+				if(e.srcElement && e.srcElement != self.listele[0] && self.list.state){
+					self.list.hide();
+				}
+				if(e.target && e.target != self.listele[0] && self.list.state){
+					self.list.hide();
+				}
+				
+				return false;
+			});
+			
+			this.listcontrol.click(function(){
+				if(self.list.state){
+					self.list.hide();
+				}else{
+					self.list.show();
+				}
+				return false;
+			});
+			
+			this.list.selected = function(item){
+				self.value = jQuery(item).data("val");
+				jQuery("#"+self.name).val(jQuery(item).text()).blur();
+				self.labelele.remove();
+				self.list.hide();
+			}
 		},
 		
 		setValue: function(value){
 			this.value = value;
 			var codes = this.fieldmeta.codetable.codes;
 			if(this.elementid){
-				$("#"+this.elementid).find("option[value='"+value+"']").attr("selected",true);
+				$("#"+this.elementid).val(codes[value]);
 				if(this.labelele && $.trim($("#"+this.elementid).val()) != ""){
 					this.labelele.remove();
 				}
