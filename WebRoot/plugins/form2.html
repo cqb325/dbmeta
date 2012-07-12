@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FORM</title>
+<script type="text/javascript" src="lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="lib/head.load.min.js"></script>
+<script type="text/javascript" src="cui/jsloader.js"></script>
+<script type="text/javascript" src="cui/jsregister.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="lib/ui.datepicker-zh-CN.js"></script>
+<link href="lib/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+	JSLoader.load("cui.CUIConnector,Form");
+	var form = null;
+	JSLoader.ready(function() {
+		var connector = new jQuery.fn.cui.CUIConnector({
+			tableId: "a8f1ce50-7124-4a6b-8fec-0780fb8bba9b",
+			pageSize: -1,
+			url: "/dbmeta/cuiConnector.cui",
+			dataType: "json"
+		});
+		connector.connector();
+		/*connector.desiner = {
+			name: "ro_dict_field",
+			id: "",
+			clazz: "container_12",
+			fields: [
+				{
+					name: "fieldid",
+					type: "hidden",
+					clazz: "grid_12"
+				},
+				{
+					name: "tablename",
+					label: "用户名:",
+					clazz: "grid_6",
+					type: "text"
+				},
+				{
+					name: "fieldrule",
+					label: "密码:",
+					clazz: "grid_6",
+					type: "select"
+				},
+				{
+					name: "fieldname",
+					label: "用户组:",
+					clazz: "grid_6",
+					type: "text"
+				},
+				{
+					name: "fieldchnname",
+					label: "昵称:",
+					clazz: "grid_6",
+					type: "text"
+				},
+				{
+					name: "fieldtype",
+					label: "字段类型:",
+					clazz: "grid_6",
+					type: "select"
+				},
+				{
+					name: "fieldposition",
+					label: "字段类型:",
+					clazz: "grid_6",
+					type: "date"
+				},
+				{
+					name: "tablename",
+					label: "字段类型:",
+					clazz: "grid_6",
+					type: "edit"
+				}
+			]
+		}*/
+		form = new CUI.Form({
+			connector: connector,
+			formele: $("#dataform"),
+			type: 2
+		});
+		form.init();
+		
+		
+		//printvalues(form);
+		
+		/*form.formdb.rowpoint = 1;
+		form.formdb.onRowChange();
+		
+		console.log("-------------------------");
+		printvalues(form);*/
+		
+		
+	});
+	
+	function next(){
+		form.formdb.rowpoint = form.formdb.rowpoint + 1;
+		form.formdb.onRowChange();
+	}
+</script>
+<style type="text/css">
+body{
+	height: 600px;
+}
+
+</style>
+</head>
+<body>
+	<form id="dataform">
+	
+	</form>
+	
+	<a href="javascript: next()">NEXT</a>
+</body>
+</html>

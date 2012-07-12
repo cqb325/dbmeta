@@ -24,6 +24,7 @@
 			var metas = [];
 			var tablename = json.tablename;
 			var tableid = json.tableid;
+			var tabledesiner = json.tabledesiner;
 			//console.log(tablename);
 			var meta = new cuiPackage.cui.Meta();
 			if(json){
@@ -50,6 +51,7 @@
 			meta.setFieldMetas(metas);
 			meta.setTableName(tablename);
 			meta.setTableId(tableid);
+			meta.tabledesiner = tabledesiner;
 			return meta;
 		},
 		

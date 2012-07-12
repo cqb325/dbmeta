@@ -8,6 +8,7 @@
 	cuiPackage.Class("DBLink",{
 		name: null,
 		value: null,
+		desiner: null,
 		fieldmeta: null,
 		record: null,
 		columndata: null,
@@ -24,6 +25,8 @@
 			}
 			this.rule = [];
 			this._addRule();
+			
+			this.elementid = this.name;
 		},
 		
 		_addRule: function(){
@@ -120,6 +123,10 @@
 				
 			}
 			if(this.elementid){
+				var type = $("#"+this.elementid).attr("type");
+				if(type == "password"){
+					this.value = faultylabs.MD5(value);
+				}
 				$("#"+this.elementid).val(this.value);
 				if(this.labelele && $.trim($("#"+this.elementid).val()) != ""){
 					this.labelele.remove();

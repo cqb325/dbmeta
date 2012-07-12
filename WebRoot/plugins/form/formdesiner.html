@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>formdesiner.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link href="../lib/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css"/>
+	<link href="../../resource/theme/nomal/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../lib/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="../lib/head.load.min.js"></script>
+	<script type="text/javascript" src="../cui/jsloader.js"></script>
+	<script type="text/javascript" src="../cui/jsregister.js"></script>
+	<script type="text/javascript" src="../lib/jquery-ui-1.8.16.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+	<script type="text/javascript" src="desiner.js"></script>
+  </head>
+  
+  <body>
+    <div id="section">
+		<div id="main">
+			<!--
+			<div id="left_section">
+	    		<div id="fields_wrapper">
+	    			<ul class="outer">
+	    				
+	    			</ul>
+	    		</div>
+	    	</div>
+			-->
+			<div id="canvas">
+				<div></div>
+			</div>
+		</div>
+		<div id="right_section">
+			<div id="properties">
+				<div id="desiner_prop">
+					<div>表单大小</div>
+					<select name="desiner_w" id="desiner_w">
+						<option value="container_6">6</option>
+						<option value="container_12" selected="true">12</option>
+						<option value="container_16">16</option>
+					</select>
+				</div>
+				<div id="field_prop">
+					<div>字段大小</div>
+					<select name="field_w" id="field_w">
+						<option value="grid_1">1</option>
+						<option value="grid_2">2</option>
+						<option value="grid_3" selected="true">3</option>
+						<option value="grid_4">4</option>
+						<option value="grid_5">5</option>
+						<option value="grid_6">6</option>
+						<option value="grid_7">7</option>
+						<option value="grid_8">8</option>
+						<option value="grid_9">9</option>
+						<option value="grid_10">10</option>
+						<option value="grid_11">11</option>
+						<option value="grid_12">12</option>
+						<option value="grid_13">13</option>
+						<option value="grid_14">14</option>
+						<option value="grid_15">15</option>
+						<option value="grid_16">16</option>
+					</select>
+					<div>类型</div>
+					<select id="field_type" name="field_type">
+						<option value="text" selected="true">text</option>
+						<option value="select">select</option>
+						<option value="password">password</option>
+						<option value="date">date</option>
+						<option value="multiselect">multiselect</option>
+						<option value="edit">edit</option>
+						<option value="image">image</option>
+					</select>
+				</div>
+			</div>
+			<div class="control ui-state-default cleardesiner"><span>清除</span></div>
+			<div class="control ui-state-default delete"><span>删除</span></div>
+			<div class="control ui-state-default save"><span>保存</span></div>
+			<div class="control ui-state-default edit"><span>修改</span></div>
+		</div>
+    </div>
+	
+	<div style="display: none;">
+		<form id="dataform"></form>
+	</div>
+  </body>
+</html>

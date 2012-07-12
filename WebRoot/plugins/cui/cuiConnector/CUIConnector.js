@@ -126,7 +126,7 @@
 				async: false,
 				data: {c_action: 'meta', c_tableid: self.tableId, c_datatype: self.dataType},
 				success: function(data){
-					//alert(new XMLSerializer().serializeToString(doc,"text/xml"));
+					//console.log(new XMLSerializer().serializeToString(doc,"text/xml"));
 					self.meta = self.dataReader.readFieldMeta(data);
 				}
 			});

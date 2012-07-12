@@ -47,7 +47,7 @@ form{
 				<a href="#" class="toolbar_bt editUg">修改用户组</a>
 				<a href="#" class="toolbar_bt deleteUg">删除用户组</a>
 				<a href="#" class="toolbar_bt addUser">添加用户</a>
-				<a href="#" class="toolbar_bt editUser">修改用户</a>
+				<!-- <a href="#" class="toolbar_bt editUser">修改用户</a> -->
 				<a href="#" class="toolbar_bt deleteUser">删除用户</a>
 			</div>
 			<div class="oprang">

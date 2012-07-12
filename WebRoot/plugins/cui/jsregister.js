@@ -144,21 +144,27 @@
 	JSLoader.register("validatezh_CN","form/validate/languages/jquery.validationEngine-zh_CN.js");
 	JSLoader.dependlib("validate","validatezh_CN");
 	
+	JSLoader.register("MD5","form/md5.js");
+	
 	JSLoader.register("InputText","form/core/inputtext.js");
 	JSLoader.register("ComBox","form/core/combox.js");
 	JSLoader.register("TextArea","form/core/textarea.js");
 	JSLoader.register("DateInput","form/core/dateinput.js");
-	JSLoader.register("Form","form/form.js");
+	JSLoader.register("Form","form/form2.0.js");
 	JSLoader.register("FormDB","form/formdb.js");
 	JSLoader.register("DBLink","form/dblink.js");
+	JSLoader.register("FormDesiner","form/formdesiner.js");
 	JSLoader.dependlib("Form","Class");
 	JSLoader.dependlib("Form","FormDB");
 	JSLoader.dependlib("Form","DBLink");
+	JSLoader.dependlib("Form","FormDesiner");
 	JSLoader.dependlib("Form","InputText");
 	JSLoader.dependlib("Form","ComBox");
 	JSLoader.dependlib("Form","TextArea");
 	JSLoader.dependlib("Form","DateInput");
 	JSLoader.dependlib("Form","validate");
-	JSLoader.dependcss("Form","form/form.css");
+	JSLoader.dependlib("Form","MD5");
+	JSLoader.dependcss("Form","form/form_desiner.css");
+	//JSLoader.dependcss("Form","form/form.css");
 /////////////////////////////form   end  //////////////////////////
 })(jQuery);
