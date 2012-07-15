@@ -4,7 +4,7 @@ var desiner = {};
 var formdesiner = null;
 
 var container = null;
-var tableid = "a8f1ce50-7124-4a6b-8fec-0780fb8bba9b";//"df8934c2-8398-4060-8a69-5f159fc495db";//
+
 JSLoader.ready(function() {
 	container = $("#canvas").children("div").addClass("sort");
 	
@@ -21,7 +21,7 @@ JSLoader.ready(function() {
 	});
 	formdesiner = new CUI.FormDesiner();
 	
-	initFields();
+	//initFields();
 	
 });
 
@@ -41,7 +41,7 @@ function initFields(){
 			desiner["tableid"] = meta.tabledesiner.tableid;
 			desiner.clazz = meta.tabledesiner.clazz;
 			
-			container.addClass(desiner.clazz);
+			container[0].className = desiner.clazz + " sort";
 			container.append("<h2>表单设计</h2>");
 			$("#desiner_w option").removeAttr("selected");
 			$("#desiner_w option[value='"+desiner.clazz+"']").attr("selected", true);
@@ -70,7 +70,7 @@ function initFields(){
 			desiner["tableid"] = meta.tableId;
 			desiner.clazz = "container_12";
 			
-			container.addClass(desiner.clazz);
+			container[0].className = desiner.clazz + " sort";
 			container.append("<h2>哈哈</h2>");
 			
 			desiner.fields = {};
@@ -327,7 +327,6 @@ function getAllTables(){
 	
 	
 	connector.connector(function(){
-		console.log(connector);
 		if(connector.records){
 			for(var i in connector.records){
 				var record = connector.records[i];

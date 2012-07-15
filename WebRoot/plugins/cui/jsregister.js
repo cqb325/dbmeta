@@ -167,4 +167,6 @@
 	JSLoader.dependcss("Form","form/form_desiner.css");
 	//JSLoader.dependcss("Form","form/form.css");
 /////////////////////////////form   end  //////////////////////////
+
+	JSLoader.register("CLog","log/clog.js");
 })(jQuery);
