@@ -1,4 +1,4 @@
-JSLoader.load("Panel,Tree,Grid,Box,cui.CUIConnector,FloatDiv,Form,ToolTip");
+JSLoader.load("Panel,Tree,Grid,Box,cui.CUIConnector,FloatDiv,Form,ToolTip,CLog");
 var tree = null;
 var grid = null;
 var floatform = null;
@@ -7,7 +7,13 @@ var functiontableid = "c38a4e37-bfe3-4177-937c-068601c83f56";
 var functionid = null;
 //操作类型1: 功能组 2： 子功能
 var oprationtype = 1;
+
+var log = null;
 JSLoader.ready(function() {
+	
+	log = new CUI.CLog("功能",{
+		logservice: ctx+"logAction!addLog.action"
+	});
 	//页面布局
 	initLayerout();
 	
@@ -403,9 +409,11 @@ function functiongroupformop(){
 		var parentid = functionid;
 		if (form.type == 1) {
 			$.Box.success("提示", "添加功能成功");
+			log.info("添加功能组","添加成功");
 		}
 		if(form.type == 2){
 			$.Box.success("提示", "修改功能成功");
+			log.info("修改功能组","修改成功");
 			var node = tree._globalIdStorageFind(functionid);
   			var parentnode = node.parentObject;
 			parentid = parentnode.id;
@@ -416,6 +424,7 @@ function functiongroupformop(){
 		loadChildrenItems(parentid, null, -1);
 	}, function(){
 		$.Box.error("提示", "功能更新失败");
+		log.error("更新功能组","更新失败");
 	});
 }
 
@@ -424,11 +433,13 @@ function functiongroupformop(){
  */
 function functionformop(){
 	form.submit(function(){
+		log.info("更新功能","更新成功");
 		createTable(functionid);
 		if(floatform){
 			floatform.hide();
 		}
 	}, function(){
 		$.Box.error("提示", "功能更新失败");
+		log.info("更新功能","更新失败");
 	});
 }

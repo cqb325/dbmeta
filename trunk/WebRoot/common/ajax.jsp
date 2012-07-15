@@ -8,7 +8,6 @@
 		
 		try {
 			Object object = request.getAttribute("json");
-			System.out.println(object.toString());
 			if (object != null){
 				PrintWriter pw = response.getWriter();
 				pw.print(object);
