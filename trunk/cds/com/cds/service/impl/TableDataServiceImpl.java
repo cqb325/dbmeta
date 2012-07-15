@@ -13,21 +13,19 @@ import org.apache.log4j.Logger;
 
 import com.at21.jdbc.core.JdbcTemplate;
 import com.cds.service.AbstractDataService;
-import com.cui.service.impl.RecordDataService;
-import com.cui.util.Constaint;
-import com.dataService.DataService;
 import com.dbmeta.entry.CodeTable;
 import com.dbmeta.entry.CodeTableData;
 import com.dbmeta.entry.Field;
 import com.dbmeta.entry.Table;
 import com.dbmeta.util.DBManager;
 /**
- * ¶şÎ¬±íµÄÊı¾İ·şÎñÊµÏÖ
+ * äºŒç»´è¡¨çš„æ•°æ®æœåŠ¡å®ç°
  * @author Administrator
  *
  */
 public class TableDataServiceImpl extends AbstractDataService{
 	
+	@SuppressWarnings("unchecked")
 	public TableDataServiceImpl(Map arg){
 		super(arg);
 	}
@@ -40,8 +38,8 @@ public class TableDataServiceImpl extends AbstractDataService{
 	public List<Map<String,Object>> getData(String tableId, String where) {
 		String tablename = DBManager.getTableNameById(this.tableId);
 		if(tablename == null){
-			logger.info("²»´æÔÚ¸Ã±í¸ñ:"+tablename);
-			throw new RuntimeException("²»´æÔÚ¸Ã±í¸ñ:"+tablename);
+			logger.info("ä¸å­˜åœ¨è¯¥è¡¨æ ¼:"+tablename);
+			throw new RuntimeException("ä¸å­˜åœ¨è¯¥è¡¨æ ¼:"+tablename);
 		}
 		String sql = appendSqlByConds(tablename, where);
 		List<Map<String, Object>> res = null;
@@ -69,7 +67,7 @@ public class TableDataServiceImpl extends AbstractDataService{
 	@Override
 	public String appendJsonData(List<Map<String,Object>> res) {
 		Table table = DBManager.getTableById(this.tableId);
-		String tablename = DBManager.getTableNameById(tableId);
+//		String tablename = DBManager.getTableNameById(tableId);
 		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
 		List<Field> fields = table.getFields();
 		for(Iterator<Field> iter = fields.iterator(); iter.hasNext();){
@@ -80,7 +78,7 @@ public class TableDataServiceImpl extends AbstractDataService{
 				java.lang.reflect.Field fieldfield =  fieldfields[j];
 				String fieldname = fieldfield.getName();
 				fieldfield.setAccessible(true);
-				Class<?> fieldtype = fieldfield.getType();
+//				Class<?> fieldtype = fieldfield.getType();
 				String value = null;
 				try {
 					Object cellvalue = fieldfield.get(field);
@@ -124,9 +122,10 @@ public class TableDataServiceImpl extends AbstractDataService{
 		return json.toString();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String appendXmlData(List<Map<String, Object>> res) {
-		String tablename = DBManager.getTableNameById(tableId);
+//		String tablename = DBManager.getTableNameById(tableId);
 		Table table = DBManager.getTableById(tableId);
 		
 		StringBuffer xml = new StringBuffer();
@@ -141,7 +140,6 @@ public class TableDataServiceImpl extends AbstractDataService{
 				java.lang.reflect.Field fieldfield =  fieldfields[j];
 				String fieldname = fieldfield.getName();
 				fieldfield.setAccessible(true);
-				Class<?> fieldtype = fieldfield.getType();
 				String value = null;
 				try {
 					Object cellvalue = fieldfield.get(field);
@@ -157,7 +155,7 @@ public class TableDataServiceImpl extends AbstractDataService{
 			}
 			xml.append(">");
 			String codetableid = field.getCodetableid();
-			//´æÔÚ´úÂë±í
+			//å­˜åœ¨ä»£ç è¡¨
 			if(codetableid != null && !codetableid.trim().equals("")){
 				CodeTable codetable = DBManager.getCodeTableById(codetableid);
 				String codetabletitle = codetable.getCodetabletitle();
@@ -193,7 +191,7 @@ public class TableDataServiceImpl extends AbstractDataService{
 	}
 
 	/**
-	 * Æ´sqlÓï¾ä
+	 * æ‹¼sqlè¯­å¥
 	 * @param tablename
 	 * @param where
 	 * @return

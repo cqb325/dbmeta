@@ -37,4 +37,10 @@
 			<result name="success">/common/ajax.jsp</result>
 		</action>
 	</actions>
+	
+	<actions name="logAction">
+		<action name="addLog">
+			<result name="success">/common/ajax.jsp</result>
+		</action>
+	</actions>
 </config>

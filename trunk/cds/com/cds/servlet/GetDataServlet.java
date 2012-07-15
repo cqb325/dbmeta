@@ -2,7 +2,6 @@ package com.cds.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,8 +15,10 @@ import com.cds.constant.DsConstant;
 import com.cds.service.DataService;
 import com.cds.service.impl.TableDataServiceImpl;
 
+@SuppressWarnings("serial")
 public class GetDataServlet extends HttpServlet {
 
+	@SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -42,7 +43,7 @@ public class GetDataServlet extends HttpServlet {
 			myMap.put(key, val);
 		}
 		if( myMap.get(DsConstant.PROTOCAL) == null ){
-			throw new RuntimeException("√ª”–¥´µ›protocal≤Œ ˝£°");
+			throw new RuntimeException("Ê≤°Êúâ‰º†ÈÄíprotocalÂèÇÊï∞ÔºÅ");
 		}
 		String protocal = (myMap.get(DsConstant.PROTOCAL)).toString();
 		if(protocal.equals(DsConstant.PROTOCAL_TABLE)){
