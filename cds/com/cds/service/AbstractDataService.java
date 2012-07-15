@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.cds.constant.DsConstant;
-import com.cds.service.impl.TableDataServiceImpl;
 
 public abstract class AbstractDataService implements DataService {
 	
@@ -18,28 +17,28 @@ public abstract class AbstractDataService implements DataService {
 	
 	public AbstractDataService(Map arg){
 		if( arg.get(DsConstant.TABLEID)==null ){
-			logger.error("Ã»ÓĞ´«µİtableId²ÎÊı£¡");
-			throw new RuntimeException("Ã»ÓĞ´«µİtableId²ÎÊı£¡");
+			logger.error("æ²¡æœ‰ä¼ é€’tableIdå‚æ•°ï¼");
+			throw new RuntimeException("æ²¡æœ‰ä¼ é€’tableIdå‚æ•°ï¼");
 		}
 		if( arg.get(DsConstant.WHERE)==null ){
-			logger.error("Ã»ÓĞ´«µİwhere²ÎÊı£¡");
-			throw new RuntimeException("Ã»ÓĞ´«µİwhere²ÎÊı£¡");
+			logger.error("æ²¡æœ‰ä¼ é€’whereå‚æ•°ï¼");
+			throw new RuntimeException("æ²¡æœ‰ä¼ é€’whereå‚æ•°ï¼");
 		}
 		this.tableId = arg.get(DsConstant.TABLEID).toString();
 		this.where = arg.get(DsConstant.WHERE).toString();
 	}
 	/**
-	 * È¡Êı¾İ
+	 * å–æ•°æ®
 	 */
 	public abstract List<Map<String,Object>> getData(String tableId, String where);
 	/**
-	 * Æ´json×Ö·û´®
+	 * æ‹¼jsonå­—ç¬¦ä¸²
 	 * @param res
 	 * @return
 	 */
 	public abstract String appendJsonData(List<Map<String,Object>> res);
 	/**
-	 * Æ´Xml×Ö·û´®
+	 * æ‹¼Xmlå­—ç¬¦ä¸²
 	 * @param res
 	 * @return
 	 */

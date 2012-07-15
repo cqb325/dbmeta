@@ -2,22 +2,22 @@ package com.cds.constant;
 
 public class DsConstant {
 	/**
-	 * Êı¾İÀàĞÍĞ­Òé
+	 * æ•°æ®ç±»å‹åè®®
 	 * table file poi wms tile
 	 */
 	public static final String PROTOCAL = "protocal";
 	/**
-	 * ±íid
+	 * è¡¨id
 	 */
 	public static final String TABLEID = "tableId";
 	
 	
 	/**
-	 * ²ÎÊı where=¡±fieldname1|1|xxx,fieldname2|9|yyy,fieldname3|7|100$200¡±
+	 * å‚æ•° where=â€fieldname1|1|xxx,fieldname2|9|yyy,fieldname3|7|100$200â€
 	 */
 	public static final String WHERE = "where";
 	/**
-	 * ¶şÎ¬±íÀàĞÍ
+	 * äºŒç»´è¡¨ç±»å‹
 	 */
 	public static final String PROTOCAL_TABLE = "table";
 	
