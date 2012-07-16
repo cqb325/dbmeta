@@ -1,12 +1,15 @@
 package com.cui.service.impl;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 import org.apache.log4j.Logger;
 
@@ -14,6 +17,7 @@ import com.at21.jdbc.core.JdbcTemplate;
 import com.at21.jdbc.support.PageNation;
 import com.cui.service.CUIService;
 import com.cui.util.Constaint;
+import com.cui.util.Date2JsonProcessor;
 import com.dbmeta.entry.Field;
 import com.dbmeta.entry.Table;
 import com.dbmeta.util.DBManager;
@@ -76,7 +80,11 @@ public class RecordDataService implements CUIService{
 			json.put("total", totalcounts);
 			json.put("pagecount", pagecount);
 			List<?> results = pageNation.getList();
-			json.put("records", JSONArray.fromObject(results));
+			JsonConfig jsonConfig = new JsonConfig();
+			Date2JsonProcessor beanProcessor = new Date2JsonProcessor();
+			jsonConfig.registerJsonValueProcessor(Date.class, beanProcessor);
+			jsonConfig.registerJsonValueProcessor(Timestamp.class, beanProcessor);
+			json.put("records", JSONArray.fromObject(results,jsonConfig));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -191,17 +199,17 @@ public class RecordDataService implements CUIService{
 	private String getWherePart(String fieldname, String op, String fv) {
 		String where = fieldname;
 		int opvalue = Integer.valueOf(op);
-		if(Constaint.OPERATER.BETWEEN.ordinal() == opvalue){
+		if(6 == opvalue){
 			String[] args = fv.split("\\$");
-			String betweenop = Constaint.OPERATER.EQUIRE.getOp();
-			betweenop = betweenop.replace("arg1", args[0]);
-			betweenop = betweenop.replace("arg2", args[1]);
-			where += betweenop;
-		}else if(Constaint.OPERATER.LIKE.ordinal() == opvalue){
-			where += Constaint.OPERATER.EQUIRE.getOp();
-			where += "'%"+fv+"%'";
-		}else{
-			where += Constaint.OPERATER.EQUIRE.getOp();
+			String betweenop = Constaint.OPERATER[opvalue];
+			betweenop = betweenop.replace("arg1", "'"+args[0] + "'");
+			betweenop = betweenop.replace("arg2", "'"+args[1] + "'");
+			where += " "+betweenop;
+		}else if(7 == opvalue){
+			where += " "+Constaint.OPERATER[opvalue];
+			where += " '%"+fv+"%'";
+		}else {
+			where += Constaint.OPERATER[opvalue];
 			where += "'"+fv+"'";
 		}
 			
