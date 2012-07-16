@@ -36,16 +36,17 @@ public class Constaint {
 	//大字段
 	public final static int CUI_DATATYPE_Text = 7;
 	
-	public enum OPERATER{
-		EQUIRE("="),NOTEQUIRE("<>"),GT(">"),LT("<"),GTEQUIRE(">="),LTEQUIRE("<="),BETWEEN("between arg1 and arg2"),LIKE("like");
-		
-		private String op;
-		private OPERATER(String op){
-			this.op = op;
-		}
-		
-		public String getOp(){
-			return this.op;
-		}
-	}
+	/**
+	 * 0 不等于
+	 * 1 等于
+	 * 2 大于
+	 * 3 小于
+	 * 4 大于等于
+	 * 5 小于等于
+	 * 6 between
+	 * 7 like
+	 */
+	public static String[] OPERATER = new String[]{
+		"<>","=",">","<",">=","<=","between arg1 and arg2","like"
+	};
 }
