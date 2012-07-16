@@ -181,7 +181,7 @@ public class RecordDataService implements CUIService{
 					String fv = letters[2];
 					
 					String wherepart = getWherePart(fieldname, op, fv);
-					where += " and " + wherepart;
+					where += " " + wherepart;
 				}
 			}
 		}
@@ -197,7 +197,7 @@ public class RecordDataService implements CUIService{
 	 * @return
 	 */
 	private String getWherePart(String fieldname, String op, String fv) {
-		String where = fieldname;
+		String where = " and "+fieldname;
 		int opvalue = Integer.valueOf(op);
 		if(6 == opvalue){
 			String[] args = fv.split("\\$");
@@ -208,6 +208,12 @@ public class RecordDataService implements CUIService{
 		}else if(7 == opvalue){
 			where += " "+Constaint.OPERATER[opvalue];
 			where += " '%"+fv+"%'";
+		}else if(20 == opvalue){
+			where = " order by ";
+			where += " "+fieldname+" asc";
+		}else if(21 == opvalue){
+			where = " order by ";
+			where += " "+fieldname+" desc";
 		}else {
 			where += Constaint.OPERATER[opvalue];
 			where += "'"+fv+"'";
