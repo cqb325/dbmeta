@@ -123,10 +123,6 @@
 				
 			}
 			if(this.elementid){
-				var type = $("#"+this.elementid).attr("type");
-				if(type == "password"){
-					this.value = faultylabs.MD5(value);
-				}
 				$("#"+this.elementid).val(this.value);
 				if(this.labelele && $.trim($("#"+this.elementid).val()) != ""){
 					this.labelele.remove();
@@ -138,6 +134,10 @@
 			if (this.fieldmeta) {
 				var defaultvalue = this.fieldmeta.getfielddefaultvalue();
 				if(defaultvalue && defaultvalue != ""){
+					var type = $("#"+this.elementid).attr("type");
+					if(type == "password"){
+						defaultvalue = faultylabs.MD5(defaultvalue);
+					}
 					this.setValue(defaultvalue);
 				}
 			}

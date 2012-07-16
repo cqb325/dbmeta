@@ -1,4 +1,4 @@
-JSLoader.load("Panel,Tree,Grid,Box,cui.CUIConnector,FloatDiv,Form,ToolTip");
+JSLoader.load("Panel,Tree,Grid,Box,cui.CUIConnector,FloatDiv,Form,ToolTip,CLog");
 var tree = null;
 var grid = null;
 var ugid = null;
@@ -7,7 +7,13 @@ var floatform = null;
 var form = null;
 var usergrouptableid = "f5bce544-0771-497e-86a8-77e4ff578579";
 var usertableid = "a8f1ce50-7124-4a6b-8fec-0780fb8bba9b";
+var log = null;
 JSLoader.ready(function() {
+	
+	log = new CUI.CLog("用户",{
+		logservice: ctx+"logAction!addLog.action"
+	});
+	
 	//页面布局
 	initLayerout();
 	
@@ -270,7 +276,7 @@ function addUser(){
 		});
 	});
 }
-/*
+
 function editUser(){
 	if (!grid.selectedRowIds.length || grid.selectedRowIds.length > 1) {
 		$.Box.message("提示","请选择一个用户进行修改");
@@ -298,7 +304,7 @@ function editUser(){
 		});
 		form.init();
 	});
-}*/
+}
 
 function deleteUser(){
 	if (!grid.selectedRowIds.length) {
@@ -403,12 +409,15 @@ function ugformop(){
 		var parentid = ugid;
 		if (form.type == 1) {
 			$.Box.success("提示", "添加用户组成功");
+			log.info("添加用户组"+form.formdb.getElementById("ugtitle").getValue(), "添加成功");
 		}
 		if(form.type == 2){
 			$.Box.success("提示", "修改用户组成功");
 			var node = tree._globalIdStorageFind(ugid);
   			var parentnode = node.parentObject;
 			parentid = parentnode.id;
+			
+			log.info("修改用户组"+form.formdb.getElementById("ugtitle").getValue(), "修改成功");
 		}
 		if(floatform){
 			floatform.hide();
@@ -416,6 +425,8 @@ function ugformop(){
 		loadChildrenItems(parentid, null, -1);
 	}, function(){
 		$.Box.error("提示", "用户组更新失败");
+		
+		log.error("更新用户组"+form.formdb.getElementById("ugtitle").getValue(), "更新失败");
 	});
 }
 
@@ -426,9 +437,11 @@ function userformop(){
 	form.submit(function(){
 		if (form.type == 1) {
 			$.Box.success("提示", "添加用户成功");
+			log.info("添加用户"+form.formdb.getElementById("username").getValue(), "添加成功");
 		}
 		if(form.type == 2){
 			$.Box.success("提示", "修改用户成功");
+			log.info("修改用户"+form.formdb.getElementById("username").getValue(), "修改成功");
 		}
 		if(floatform){
 			floatform.hide();
@@ -436,5 +449,6 @@ function userformop(){
 		createUserTable(ugid);
 	}, function(){
 		$.Box.error("提示", "用户更新失败");
+		log.error("更新用户"+form.formdb.getElementById("username").getValue(), "更新失败");
 	});
 }
