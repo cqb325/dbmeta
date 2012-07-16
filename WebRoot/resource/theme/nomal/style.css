@@ -45,6 +45,9 @@ a.toolbar_bt.add{
 a.toolbar_bt.delete{
 	background-image: url(images/cog_delete.png);
 }
+a.toolbar_bt.query{
+	background-image: url(images/magnifier.png);
+}
 a.toolbar_bt.extracte{
 	background-image: url(images/extracte.png);
 }
