@@ -17,7 +17,6 @@
 		 */
 		_initialize: function(type, options){
 			this.type = type;
-			alert(type);
 			for(var i in options){
 				this[i] = options[i];
 			}
