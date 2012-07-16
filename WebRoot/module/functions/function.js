@@ -270,7 +270,7 @@ function editSubFunction(){
  */
 function delFunction(){
 	if(!functionid){
-		$.Box.message("提示","请选择要删除的功能");
+		$.Box.message("提示","请选择要删除的功能组");
 		return false;
 	}
 	
@@ -302,6 +302,8 @@ function delFunction(){
 	      			var parentnode = node.parentObject;
 					var parentid = parentnode.id;
 					loadChildrenItems(parentid, null, -1);
+					
+					log.info("删除"+connector.records[0].get("ttitle"),"删除成功");
 				});
 			}]
 		});
@@ -313,7 +315,7 @@ function delFunction(){
  */
 function delSubFunction(){
 	if (!grid.selectedRowIds.length) {
-		$.Box.message("提示","请选择要删除的用户");
+		$.Box.message("提示","请选择要删除的功能");
 		return false;
 	}
 	var rowids = grid.selectedRowIds;
@@ -346,6 +348,7 @@ function delSubFunction(){
 					
 					form.submit(function(){
 						createTable(functionid);
+						log.info("删除"+connector.records[0].get("ttitle"),"删除成功");
 					});
 				});
 			}

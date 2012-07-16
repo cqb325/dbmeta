@@ -1,7 +1,14 @@
-JSLoader.load("Panel,Tree,Box,cui.CUIConnector,ToolTip,Form");
+JSLoader.load("Panel,Tree,Box,cui.CUIConnector,ToolTip,Form,CLog");
 var ugid = null;
 var righttableid = "df1dae5d-2542-4e05-964e-6d445d6c2767";
+
+var log = null;
+var usergroupname = null;
 JSLoader.ready(function() {
+	log = new CUI.CLog("权限管理",{
+		logservice: ctx+"logAction!addLog.action"
+	});
+	
 	//页面布局
 	initLayerout();
 	//初始化用户组树
@@ -47,6 +54,7 @@ function initGroupTree(){
 	tree.clicked = function(id, item, state){
 		if(id != -1){
 			ugid = id;
+			usergroupname = tree.getItemText(id);
 			getDesinerXML();
 		}
 	}
@@ -163,6 +171,7 @@ function addRight(row){
 			
 			form.submit(function(){
 				$.Box.message("提示","更新成功");
+				log.info("修改"+usergroupname+"的权限","修改成功");
 			});
 		}
 	});

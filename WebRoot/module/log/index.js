@@ -12,7 +12,9 @@ JSLoader.ready(function() {
 	initLayerout();
 	
 	//初始化日志表格
-	initLogGrid();
+	initLogGrid({
+		where: "logtime|21|true"
+	});
 	
 	//操作区监听
 	initOpListeners();
@@ -125,7 +127,9 @@ function deleteLog(){
 					
 					form.submit(function(){
 						log.info("删除日志","删除成功");
-						initLogGrid();
+						initLogGrid({
+							where: "logtime|21|true"
+						});
 					});
 				});
 			}
@@ -148,6 +152,8 @@ function queryLog(){
 	}else if(starttime == "" && endtime != ""){
 		args.push("logtime|3|"+endtime);
 	}
+	
+	args.push("logtime|21|true");
 	var params = {};
 	params["where"] = args.join(",");
 	

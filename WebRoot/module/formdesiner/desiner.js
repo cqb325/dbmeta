@@ -1,11 +1,17 @@
-JSLoader.load("Panel,Tree,Box,cui.CUIConnector,FloatDiv,Form,ToolTip");
+JSLoader.load("Panel,Tree,Box,cui.CUIConnector,FloatDiv,Form,ToolTip,CLog");
 var meta = null;
 var desiner = {};
 var formdesiner = null;
 
 var container = null;
 
+var log = null;
+
 JSLoader.ready(function() {
+	log = new CUI.CLog("表单设计",{
+		logservice: ctx+"logAction!addLog.action"
+	});
+	
 	container = $("#canvas").children("div").addClass("sort");
 	
 	//获取所有的表格
@@ -204,6 +210,7 @@ function initLayerout(){
 			
 			form.submit(function(){
 				$.Box.message("提示","保存成功!");
+				log.info("修改"+connector.meta.getTableName()+"的表单设计", "修改成功");
 			});
 		});
 		
