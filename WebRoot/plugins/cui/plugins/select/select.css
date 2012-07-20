@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+/* select style */
+/* must have this*/
+.cui-select-dropdown {outline:none; width: 100%;}
+.cui-select-dropdown h4{cursor:default; text-indent:5px;}
+.cui-select-dropdown * {-moz-user-select:none;}
+.cui-select-dropdown h4.cui-select-over {}
+.cui-select-dropdown div {display:none; position:relative;}
+.cui-select-dropdown span {position:absolute;}
+.cui-select-dropdown ul{position:absolute;display:none;list-style: none;margin: 0px; padding: 0px;}
+.cui-select-dropdown ul li{text-indent:5px;}
+.cui-select-dropdown ul li.cui-select-over{}
+/* write you style here */
+.cui-select-dropselectbox {background:#DDD url(selectBg.png) repeat-x left top;}
+.cui-select-dropdown {float:left;}
+.cui-select-dropdown h4{display:block; margin:0; height:24px; font:12px/21px Arial, Helvetica, sans-serif; border:solid 1px #AAA;background:url(droparrow.gif) no-repeat right center;}
+.cui-select-dropdown h4.cui-select-over{border-color:#369; background-image:url(droparrowover.gif);}
+.cui-select-dropdown h4.cui-select-current{border-color:#003;}
+.cui-select-dropdown ul{border:1px solid #AAA; background:#FFF;}
+.cui-select-dropdown ul li{background:#FFF;height:19px;display:block;cursor:default;font:400 12px/19px Arial, Helvetica, sans-serif;}
+.cui-select-dropdown ul li.cui-select-over{background:#369; color:#FFF;}

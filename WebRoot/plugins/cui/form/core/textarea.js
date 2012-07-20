@@ -36,16 +36,18 @@
 			if(this.height){
 				jQuery("#"+this.name).height(this.height);
 			}
-			
-			var beauty = $("<div>").addClass("cui-textarea-beauty").css("position","relative");
-			beauty.width(jQuery("#"+this.name).width()).height(jQuery("#"+this.name).height());
-			jQuery("#"+this.name).wrap(beauty);
-			jQuery("#"+this.name).addClass("cui-textarea");
-			this.labelele = jQuery("<label>").addClass("cui-inputtext-label").attr("for",this.name).html(this.label);
+			var clazz = jQuery("#"+this.name).parent().attr("class");
+			var editor = jQuery("#"+this.name).Editor().data("Editor");
+			editor.editor.$box.addClass(clazz);
+//			var beauty = $("<div>").addClass("cui-textarea-beauty").css("position","relative");
+//			beauty.width(jQuery("#"+this.name).width()).height(jQuery("#"+this.name).height());
+//			jQuery("#"+this.name).wrap(beauty);
+//			jQuery("#"+this.name).addClass("cui-textarea");
+//			this.labelele = jQuery("<label>").addClass("cui-inputtext-label").attr("for",this.name).html(this.label);
 		},
 		
 		_listener: function(){
-			var self = this;
+			/*var self = this;
 			jQuery("#"+this.name).focus(function(){
 				$(this).addClass("cui-textarea-focus");
 				if(jQuery.trim($(this).val()) == ""){
@@ -57,7 +59,28 @@
 				if(jQuery.trim($(this).val()) == ""){
 					$(this).parent(".cui-textarea-beauty").append(self.labelele);
 				}
-			}).blur();
+			}).blur();*/
+		},
+		
+		setValue: function(value){
+			this.value = value;
+			if(this.elementid){
+				jQuery("#"+this.name).setCode(value);
+//				$("#"+this.elementid).val(this.value);
+			}
+		},
+		
+		setDefaultValue: function(){
+			if (this.fieldmeta) {
+				var defaultvalue = this.fieldmeta.getfielddefaultvalue();
+				if(defaultvalue && defaultvalue != ""){
+					var type = $("#"+this.elementid).attr("type");
+					if(type == "password"){
+						defaultvalue = faultylabs.MD5(defaultvalue);
+					}
+					this.setValue(defaultvalue);
+				}
+			}
 		}
 	});
 })(jQuery.fn);
