@@ -28,24 +28,6 @@
 		},
 		
 		_create: function(){
-			/*var beauty = $("<span>").addClass("cui-inputtext-beauty").css("position","relative");
-			jQuery("#"+this.name).wrap(beauty);
-			jQuery("#"+this.name).addClass("cui-inputtext");
-			this.labelele = jQuery("<label>").addClass("cui-inputtext-label").attr("for",this.name).html(this.label);
-			
-			this.listele = $("<div>").addClass("cui-combox-list");
-			jQuery("#"+this.name).before(this.listele);
-			var width = jQuery("#"+this.name).outerWidth(true);
-			var inpm = parseInt(jQuery("#"+this.name).css("margin-left")) + parseInt(jQuery("#"+this.name).css("margin-right"));
-			this.listele.width(width - inpm - 2);
-			
-			this.listcontrol = jQuery("<div>").addClass("cui-combox-control");
-			jQuery("#"+this.name).before(this.listcontrol);
-			this.listcontrol.css({
-				left: jQuery("#"+this.name).width() - 14,
-				top: 0
-			});
-			*/
 			var codes = this.fieldmeta.codetable.codes;
 			var select = $("#"+this.name).empty();
 			for(var i in codes){
@@ -53,6 +35,8 @@
 				var option = $("<option>").html(code).attr("value", i);
 				select.append(option);
 			}
+			
+			select.Select();
 		},
 		
 		_listener: function(){

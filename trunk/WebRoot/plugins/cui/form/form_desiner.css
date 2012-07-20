@@ -44,7 +44,21 @@ input.cui-form-ele{
 }
 /* `Grid >> Global
 ----------------------------------------------------------------------------------------------------*/
-
+.gridh_1{
+	height: 100px;
+}
+.gridh_2{
+	height: 150px;
+}
+.gridh_3{
+	height: 200px;
+}
+.gridh_4{
+	height: 250px;
+}
+.gridh_5{
+	height: 300px;
+}
 .grid_1,
 .grid_2,
 .grid_3,

@@ -39,6 +39,11 @@
 	JSLoader.dependlib("Box","FloatDiv");
 	JSLoader.dependcss("Box","plugins/box/box.css");
 	
+	//选择框
+	JSLoader.register("Select","plugins/select/select.js");
+	JSLoader.dependlib("Select","Object");
+	JSLoader.dependcss("Select","plugins/select/select.css");
+	
 	//面板
 	JSLoader.register("Panel","plugins/panel/panel.js");
 	JSLoader.dependlib("Panel","Object");
@@ -158,15 +163,25 @@
 	JSLoader.dependlib("Form","FormDB");
 	JSLoader.dependlib("Form","DBLink");
 	JSLoader.dependlib("Form","FormDesiner");
+	JSLoader.dependlib("Form","Select");
 	JSLoader.dependlib("Form","InputText");
 	JSLoader.dependlib("Form","ComBox");
 	JSLoader.dependlib("Form","TextArea");
 	JSLoader.dependlib("Form","DateInput");
 	JSLoader.dependlib("Form","validate");
 	JSLoader.dependlib("Form","MD5");
+	JSLoader.dependlib("Form","Editor");
 	JSLoader.dependcss("Form","form/form_desiner.css");
 	//JSLoader.dependcss("Form","form/form.css");
 /////////////////////////////form   end  //////////////////////////
-
+/////////////////////////////editor   start //////////////////////////
+	JSLoader.register("Editor","plugins/editor/editor.js");
+	JSLoader.register("redactor","plugins/editor/redactor.min.js");
+	JSLoader.register("redactor_zh","plugins/editor/zh_cn.js");
+	JSLoader.dependlib("Editor","Object");
+	JSLoader.dependlib("Editor","redactor");
+	JSLoader.dependlib("Editor","redactor_zh");
+	JSLoader.dependcss("Editor","plugins/editor/css/redactor.css");
+/////////////////////////////editor   end  //////////////////////////
 	JSLoader.register("CLog","log/clog.js");
 })(jQuery);

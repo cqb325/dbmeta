@@ -94,7 +94,9 @@
 		_createFormElement: function(fieldname, field){
 			var divw = $("<div>").addClass(field.clazz);
 			var label = $("<div>").addClass(field.clazz).html(field.label);
-			var ele = this._createFormElementByType(fieldname, field).addClass("cui-form-ele");
+			var ele = this._createFormElementByType(fieldname, field).addClass(field.clazz).addClass("cui-form-ele");
+			field.height ? ele.height(field.height) : false;
+			
 			ele.data("parent", divw);
 			ele.data("desiner", field);
 			
