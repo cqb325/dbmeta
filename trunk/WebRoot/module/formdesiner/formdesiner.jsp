@@ -20,6 +20,9 @@
 <script type="text/javascript" src="<%=path%>/module/formdesiner/desiner.js"></script>
 </head>
 <body>
+	<div style="display: none;">
+		<form id="dataform"></form>
+	</div>
 	<div id="section">
 		<div id="main">
 			<div id="canvas">
@@ -28,7 +31,7 @@
 		</div>
 		<div id="right_section">
 			<div id="properties">
-				<div>
+				<div id="alltables">
 					<div>选择表格</div>
 					<select id="tables">
 						<option value="">选择表格</option>
@@ -43,7 +46,7 @@
 					</select>
 				</div>
 				<div id="field_prop">
-					<div>字段大小</div>
+					<div>显示宽度</div>
 					<select name="field_w" id="field_w">
 						<option value="grid_1">1</option>
 						<option value="grid_2">2</option>
@@ -62,6 +65,8 @@
 						<option value="grid_15">15</option>
 						<option value="grid_16">16</option>
 					</select>
+					<div>显示高度</div>
+					<input id="field_h" name="field_h">
 					<div>类型</div>
 					<select id="field_type" name="field_type">
 						<option value="text">text</option>
@@ -79,9 +84,5 @@
 			<div class="control ui-state-default save"><span>保存</span></div>
 		</div>
     </div>
-	
-	<div style="display: none;">
-		<form id="dataform"></form>
-	</div>
 </body>
 </html>

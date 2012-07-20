@@ -1,4 +1,4 @@
-JSLoader.load("Panel,Tree,Box,cui.CUIConnector,FloatDiv,Form,ToolTip,CLog");
+JSLoader.load("Panel,Tree,Box,cui.CUIConnector,FloatDiv,Form,ToolTip,CLog,Select");
 var meta = null;
 var desiner = {};
 var formdesiner = null;
@@ -125,12 +125,14 @@ function addField2Canvas(fieldmeta, fieldsiner){
 	var name = fieldmeta.getfieldname();
 	desiner.fields[name] = field;
 	
-	var fieldw = $("<div>").addClass("grid_3 field");
+	var fieldw = $("<div>").addClass(field.clazz+" field");
 	if (showable == 0 || showable == "0") {
 		fieldw.addClass("hide");
 	}
 	var label = $("<div>").addClass("cui-form-label").html(fieldmeta.getfieldchnname());
 	var ele = formdesiner._createFormElementByType(name, {type: type}).addClass("cui-form-ele");
+	
+	field.height ? ele.height(field.height) : false;
 	
 	fieldw.append(label);
 	fieldw.append(ele);
@@ -145,12 +147,17 @@ function addField2Canvas(fieldmeta, fieldsiner){
 		$("#field_type option").removeAttr("selected");
 		$("#field_w option[value='"+field.clazz+"']").attr("selected", true);
 		$("#field_type option[value='"+field.type+"']").attr("selected", true);
+		$("#field_h").val(ele.height());
 		return false;
 	});
 			
 	container.append(fieldw);
 }
 function initLayerout(){
+	$("#tables").Select();
+	$("#desiner_w").Select();
+	$("#field_w").Select();
+	$("#field_type").Select();
 	$("#section").Panel({
 		anchor: "client"
 	});
@@ -219,15 +226,30 @@ function initLayerout(){
 	
 	$("#field_w").change(function(){
 		var value = $(this).val();
+		var ele = $("div.selected").find(".cui-form-ele");
+		var label = $("div.selected").find(".cui-form-label");
 		var fieldname = $("div.selected").find(".cui-form-ele").attr("name");
 		var field = desiner.fields[fieldname];
 		if (field.clazz) {
 			$("div.selected").removeClass(field.clazz);
 			$("div.selected").addClass(value);
+			ele.removeClass(field.clazz);
+			ele.addClass(value);
+			label.removeClass(field.clazz);
+			label.addClass(value);
 			desiner.fields[fieldname].clazz = value;
 		}else{
 			alert(fieldname+"没有clazz");
 		}
+	});
+	
+	$("#field_h").change(function(){
+		var value = $(this).val();
+		var ele = $("div.selected").find(".cui-form-ele");
+		var fieldname = $("div.selected").find(".cui-form-ele").attr("name");
+		var field = desiner.fields[fieldname];
+		ele.height(value);
+		desiner.fields[fieldname]["height"] = value;
 	});
 	
 	$("#desiner_w").change(function(){
@@ -289,8 +311,9 @@ function getdesiner(){
 				type: field.type,
 				label: field.label,
 				clazz: field.clazz,
-				name: fieldname
+				name: fieldname,
 			};
+			field.height == undefined ? false :  newfield.height = field.height;
 			newdesiner.fields.push(newfield);
 		}
 	});
