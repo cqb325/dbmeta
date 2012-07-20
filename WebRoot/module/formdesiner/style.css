@@ -51,6 +51,7 @@ li.field_info{
 	line-height: 20px;
 	cursor:pointer;
 	text-align: center;
+	clear: both;
 }
 .selected{
 	background-color: #3DA2FF;
@@ -65,10 +66,11 @@ li.field_info{
 }
 
 #desiner_w,#field_w,#field_type{
-	width: 100%;
+	width: 220px;
 }
 #field_prop{
 	display: none;
+	width: 220px;
 }
 .form_tool{
 	width: 100%;
@@ -79,4 +81,8 @@ li.field_info{
 }
 div.hide{
 	display: none;
+}
+
+select{
+	width: 220px;
 }
